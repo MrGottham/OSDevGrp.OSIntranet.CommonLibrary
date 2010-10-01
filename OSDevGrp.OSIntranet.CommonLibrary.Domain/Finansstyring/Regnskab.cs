@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
@@ -7,6 +9,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public class Regnskab
     {
+        #region Private variables
+
+        private readonly IList<KontoBase> _konti = new List<KontoBase>();
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -46,6 +54,34 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get;
             protected set;
+        }
+
+        /// <summary>
+        /// Konti på regnskabet.
+        /// </summary>
+        public virtual IList<KontoBase> Konti
+        {
+            get
+            {
+                return new ReadOnlyCollection<KontoBase>(_konti);
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Tilføjer en konto til regnskabet.
+        /// </summary>
+        /// <param name="konto">Konto.</param>
+        public void TilføjKonto(KontoBase konto)
+        {
+            if (konto == null)
+            {
+                throw new ArgumentNullException("konto");
+            }
+            _konti.Add(konto);
         }
 
         #endregion

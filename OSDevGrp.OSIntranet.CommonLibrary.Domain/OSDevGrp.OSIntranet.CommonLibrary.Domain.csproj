@@ -46,6 +46,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adressekartotek\AdresseBase.cs" />
+    <Compile Include="Adressekartotek\Adressegruppe.cs" />
+    <Compile Include="Adressekartotek\Betalingsbetingelse.cs" />
+    <Compile Include="Adressekartotek\Firma.cs" />
+    <Compile Include="Adressekartotek\Person.cs" />
+    <Compile Include="Adressekartotek\Postnummer.cs" />
     <Compile Include="Enums\Kontogruppetype.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Finansstyring\Bogføringslinje.cs" />
@@ -63,6 +69,7 @@
   <ItemGroup>
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
