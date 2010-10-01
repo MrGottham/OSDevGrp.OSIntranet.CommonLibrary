@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
+namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
     /// <summary>
     /// Budgetoplysinger for en måned i et givent år.

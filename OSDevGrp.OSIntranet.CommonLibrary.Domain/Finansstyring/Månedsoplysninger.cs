@@ -1,4 +1,4 @@
-﻿namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
+﻿namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
     /// <summary>
     /// Månedsoplysninger.
