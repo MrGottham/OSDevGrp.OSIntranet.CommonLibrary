@@ -5,6 +5,8 @@
     /// </summary>
     public class Budgetkontogruppe : KontogruppeBase
     {
+        #region Constructor
+
         /// <summary>
         /// Danner en kontogruppe til budgetkonti.
         /// </summary>
@@ -14,5 +16,7 @@
             : base(nummer, navn)
         {
         }
+
+        #endregion
     }
 }
