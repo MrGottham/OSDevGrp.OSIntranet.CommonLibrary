@@ -48,10 +48,16 @@
   <ItemGroup>
     <Compile Include="Enums\Kontogruppetype.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regnskab\Bogføringslinje.cs" />
+    <Compile Include="Regnskab\Budgetkonto.cs" />
     <Compile Include="Regnskab\Budgetkontogruppe.cs" />
+    <Compile Include="Regnskab\Budgetoplysninger.cs" />
+    <Compile Include="Regnskab\Konto.cs" />
     <Compile Include="Regnskab\KontoBase.cs" />
     <Compile Include="Regnskab\Kontogruppe.cs" />
     <Compile Include="Regnskab\KontogruppeBase.cs" />
+    <Compile Include="Regnskab\Kreditoplysninger.cs" />
+    <Compile Include="Regnskab\Månedsoplysninger.cs" />
     <Compile Include="Regnskab\Regnskab.cs" />
   </ItemGroup>
   <ItemGroup>
