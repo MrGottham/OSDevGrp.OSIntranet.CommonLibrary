@@ -46,7 +46,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Kontogruppetype.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regnskab\Budgetkontogruppe.cs" />
+    <Compile Include="Regnskab\KontoBase.cs" />
+    <Compile Include="Regnskab\Kontogruppe.cs" />
+    <Compile Include="Regnskab\KontogruppeBase.cs" />
     <Compile Include="Regnskab\Regnskab.cs" />
   </ItemGroup>
   <ItemGroup>
