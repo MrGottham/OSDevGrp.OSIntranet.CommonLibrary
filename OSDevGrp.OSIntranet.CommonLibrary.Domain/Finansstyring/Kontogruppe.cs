@@ -1,6 +1,6 @@
 ﻿using OSDevGrp.OSIntranet.CommonLibrary.Domain.Enums;
 
-namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
+namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
     /// <summary>
     /// Kontogruppe.

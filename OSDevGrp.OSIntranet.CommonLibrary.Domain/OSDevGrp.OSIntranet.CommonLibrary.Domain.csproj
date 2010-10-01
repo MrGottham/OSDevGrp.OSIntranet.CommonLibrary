@@ -48,17 +48,17 @@
   <ItemGroup>
     <Compile Include="Enums\Kontogruppetype.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Regnskab\Bogføringslinje.cs" />
-    <Compile Include="Regnskab\Budgetkonto.cs" />
-    <Compile Include="Regnskab\Budgetkontogruppe.cs" />
-    <Compile Include="Regnskab\Budgetoplysninger.cs" />
-    <Compile Include="Regnskab\Konto.cs" />
-    <Compile Include="Regnskab\KontoBase.cs" />
-    <Compile Include="Regnskab\Kontogruppe.cs" />
-    <Compile Include="Regnskab\KontogruppeBase.cs" />
-    <Compile Include="Regnskab\Kreditoplysninger.cs" />
-    <Compile Include="Regnskab\Månedsoplysninger.cs" />
-    <Compile Include="Regnskab\Regnskab.cs" />
+    <Compile Include="Finansstyring\Bogføringslinje.cs" />
+    <Compile Include="Finansstyring\Budgetkonto.cs" />
+    <Compile Include="Finansstyring\Budgetkontogruppe.cs" />
+    <Compile Include="Finansstyring\Budgetoplysninger.cs" />
+    <Compile Include="Finansstyring\Konto.cs" />
+    <Compile Include="Finansstyring\KontoBase.cs" />
+    <Compile Include="Finansstyring\Kontogruppe.cs" />
+    <Compile Include="Finansstyring\KontogruppeBase.cs" />
+    <Compile Include="Finansstyring\Kreditoplysninger.cs" />
+    <Compile Include="Finansstyring\Månedsoplysninger.cs" />
+    <Compile Include="Finansstyring\Regnskab.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />

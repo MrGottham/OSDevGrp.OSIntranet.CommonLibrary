@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
+namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
     /// <summary>
     /// Kreditoplysninger for en måned i et givent år.
