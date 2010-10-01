@@ -12,6 +12,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
         #region Private variables
 
         private readonly IList<Budgetoplysninger> _budgetoplysninger = new List<Budgetoplysninger>();
+        private readonly IList<Bogføringslinje> _bogføringslinjer = new List<Bogføringslinje>();
 
         #endregion
 
@@ -60,6 +61,17 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
             }
         }
 
+        /// <summary>
+        /// Bogføringslinjer.
+        /// </summary>
+        public virtual IList<Bogføringslinje> Bogføringslinjer
+        {
+            get
+            {
+                return new ReadOnlyCollection<Bogføringslinje>(_bogføringslinjer);
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -76,6 +88,20 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Regnskab
             }
             budgetoplysninger.SætBudgetkonto(this);
             _budgetoplysninger.Add(budgetoplysninger);
+        }
+
+        /// <summary>
+        /// Tilføjer en bogføringslinje.
+        /// </summary>
+        /// <param name="bogføringslinje">Bogføringslinje.</param>
+        public virtual void TilføjBogføringslinje(Bogføringslinje bogføringslinje)
+        {
+            if (bogføringslinje == null)
+            {
+                throw new ArgumentNullException("bogføringslinje");
+            }
+            bogføringslinje.SætBudgetkonto(this);
+            _bogføringslinjer.Add(bogføringslinje);
         }
 
         #endregion
