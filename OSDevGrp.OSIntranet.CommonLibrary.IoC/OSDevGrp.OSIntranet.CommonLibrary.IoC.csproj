@@ -42,14 +42,28 @@
     <AssemblyOriginatorKeyFile>OSDevGrp.OSIntranet.CommonLibrary.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\External references\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\External references\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windsor\Container.cs" />
+    <Compile Include="Windsor\ContainerConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj">
+      <Project>{F692A1A2-5762-4B19-9FD2-504AE474C049}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
