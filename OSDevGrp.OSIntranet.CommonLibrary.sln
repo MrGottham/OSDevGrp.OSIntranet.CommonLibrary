@@ -12,6 +12,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.IoC", "OSDevGrp.OSIntranet.CommonLibrary.IoC\OSDevGrp.OSIntranet.CommonLibrary.IoC.csproj", "{C973087B-BA1F-461B-BE7A-DB4FC03306FE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External references", "External references", "{D6244D71-78BD-43EA-A07B-E492E884D470}"
+	ProjectSection(SolutionItems) = preProject
+		External references\Castle.Core.dll = External references\Castle.Core.dll
+		External references\Castle.Windsor.dll = External references\Castle.Windsor.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 4
