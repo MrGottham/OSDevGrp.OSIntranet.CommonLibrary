@@ -23,9 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Tests", "OSDevGrp.OSIntranet.CommonLibrary.Tests\OSDevGrp.OSIntranet.CommonLibrary.Tests.csproj", "{46F07B92-FD0C-4A5E-A87B-FEEFC18E92FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces", "OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.csproj", "{5B81E227-8796-42BD-B580-566CF29509FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Infrastructure", "OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.csproj", "{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}"
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 8
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = OSDevGrp.OSIntranet.CommonLibrary.Domain\\OSDevGrp.OSIntranet.CommonLibrary.Domain.csproj
 		SccLocalPath1 = .
@@ -42,6 +46,12 @@ Global
 		SccProjectUniqueName5 = OSDevGrp.OSIntranet.CommonLibrary.Tests\\OSDevGrp.OSIntranet.CommonLibrary.Tests.csproj
 		SccLocalPath5 = .
 		SccProjectFilePathRelativizedFromConnection5 = OSDevGrp.OSIntranet.CommonLibrary.Tests\\
+		SccProjectUniqueName6 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces\\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.csproj
+		SccLocalPath6 = .
+		SccProjectFilePathRelativizedFromConnection6 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces\\
+		SccProjectUniqueName7 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.csproj
+		SccLocalPath7 = .
+		SccProjectFilePathRelativizedFromConnection7 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\\
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +78,14 @@ Global
 		{46F07B92-FD0C-4A5E-A87B-FEEFC18E92FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F07B92-FD0C-4A5E-A87B-FEEFC18E92FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F07B92-FD0C-4A5E-A87B-FEEFC18E92FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B81E227-8796-42BD-B580-566CF29509FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B81E227-8796-42BD-B580-566CF29509FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B81E227-8796-42BD-B580-566CF29509FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B81E227-8796-42BD-B580-566CF29509FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
