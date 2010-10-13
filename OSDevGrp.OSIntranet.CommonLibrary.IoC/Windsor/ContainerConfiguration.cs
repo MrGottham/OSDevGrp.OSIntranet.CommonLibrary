@@ -1,4 +1,7 @@
-﻿using Castle.Windsor;
+﻿using System;
+using Castle.Windsor;
+using OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration;
+using OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.Windsor;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Windsor
 {
@@ -14,6 +17,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Windsor
         public static IWindsorContainer GetConfiguredInstance()
         {
             IWindsorContainer container = new WindsorContainer();
+
+            foreach (var providerType in ConfigurationReader.ConfigurationProviders)
+            {
+                var provider = (IConfigurationProvider) Activator.CreateInstance(providerType);
+                provider.AddConfiguration(container);
+            }
 
             return container;
         }

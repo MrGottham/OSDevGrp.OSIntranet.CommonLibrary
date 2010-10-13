@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.Exceptions;
+using OSDevGrp.OSIntranet.CommonLibrary.Resources;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
 {
@@ -37,6 +38,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
 
         #endregion
 
+        #region Methods
+
         /// <summary>
         /// Get a configuration provider using a key.
         /// </summary>
@@ -53,10 +56,13 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
                 var containerConfigurationProvider = BaseGet(name) as ContainerConfigurationProvider;
                 if (containerConfigurationProvider == null)
                 {
-                    throw new ContainerConfigurationException();
+                    throw new ContainerConfigurationException(
+                        Resource.GetExceptionMessage(ExceptionMessage.NoConfigurationProviderFoundWithKey, name));
                 }
                 return containerConfigurationProvider;
             }
         }
+
+        #endregion
     }
 }
