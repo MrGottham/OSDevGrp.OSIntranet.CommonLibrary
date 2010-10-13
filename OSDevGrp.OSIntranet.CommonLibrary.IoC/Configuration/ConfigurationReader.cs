@@ -158,8 +158,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
             }
             if (Type.GetType(typeName) == null)
             {
-                throw new ConfigurationErrorsException(Resource.GetExceptionMessage(ExceptionMessage.InvalidType,
-                                                                                    typeName));
+                throw new ContainerConfigurationException(Resource.GetExceptionMessage(ExceptionMessage.InvalidType,
+                                                                                       typeName));
             }
         }
 

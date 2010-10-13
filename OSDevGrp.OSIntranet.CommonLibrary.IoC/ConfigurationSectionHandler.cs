@@ -1,11 +1,12 @@
 ﻿using System.Configuration;
+using OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration;
 
-namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
+namespace OSDevGrp.OSIntranet.CommonLibrary.IoC
 {
     /// <summary>
     /// Configuration section for Inversion of Control container configuration.
     /// </summary>
-    internal class ConfigurationSectionHandler : ConfigurationSection
+    public class ConfigurationSectionHandler : ConfigurationSection
     {
         #region Properties
 

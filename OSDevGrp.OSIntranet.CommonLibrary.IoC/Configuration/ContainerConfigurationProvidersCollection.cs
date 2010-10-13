@@ -9,7 +9,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
     /// Collection of Inversion of Control configuration providers.
     /// </summary>
     [ConfigurationCollection(typeof(ContainerConfigurationProvider))]
-    internal class ContainerConfigurationProvidersCollection : ConfigurationElementCollection
+    public class ContainerConfigurationProvidersCollection : ConfigurationElementCollection
     {
         #region Overrided methods
 

@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationReader.cs" />
-    <Compile Include="Configuration\ConfigurationSectionHandler.cs" />
+    <Compile Include="ConfigurationSectionHandler.cs" />
     <Compile Include="Configuration\Container.cs" />
     <Compile Include="Configuration\ContainerConfigurationProvider.cs" />
     <Compile Include="Configuration\ContainerConfigurationProvidersCollection.cs" />

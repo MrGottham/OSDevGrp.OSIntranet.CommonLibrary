@@ -42,6 +42,14 @@
     <AssemblyOriginatorKeyFile>OSDevGrp.OSIntranet.CommonLibrary.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External references\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External references\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\External references\nunit.framework.dll</HintPath>
     </Reference>
@@ -49,13 +57,30 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IoC\ConfigurationProviders\TestConfigurationProvider1.cs" />
+    <Compile Include="IoC\ConfigurationProviders\TestConfigurationProvider2.cs" />
+    <Compile Include="IoC\ContainerFactoryTests.cs" />
+    <Compile Include="IoC\ContainerTests.cs" />
+    <Compile Include="IoC\TestObjects\SomeComponent.cs" />
+    <Compile Include="IoC\TestObjects\ISomeComponent.cs" />
+    <Compile Include="IoC\TestObjects\ISomeOtherComponent.cs" />
+    <Compile Include="IoC\TestObjects\SomeOtherComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ResourceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj">
+      <Project>{F692A1A2-5762-4B19-9FD2-504AE474C049}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.IoC\OSDevGrp.OSIntranet.CommonLibrary.IoC.csproj">
+      <Project>{C973087B-BA1F-461B-BE7A-DB4FC03306FE}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.IoC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj">
       <Project>{2EBCC49B-142C-4DA2-A021-ADA925975A3A}</Project>
       <Name>OSDevGrp.OSIntranet.CommonLibrary.Resources</Name>

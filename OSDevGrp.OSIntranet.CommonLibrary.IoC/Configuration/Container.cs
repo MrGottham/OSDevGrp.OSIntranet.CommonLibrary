@@ -5,7 +5,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
     /// <summary>
     /// Represents configuration for a container.
     /// </summary>
-    internal class Container : ConfigurationElement
+    public class Container : ConfigurationElement
     {
         #region Properties
 
