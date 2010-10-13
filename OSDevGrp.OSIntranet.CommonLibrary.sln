@@ -18,9 +18,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External references", "Exte
 		External references\Castle.Windsor.dll = External references\Castle.Windsor.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Resources", "OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj", "{2EBCC49B-142C-4DA2-A021-ADA925975A3A}"
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = OSDevGrp.OSIntranet.CommonLibrary.Domain\\OSDevGrp.OSIntranet.CommonLibrary.Domain.csproj
 		SccLocalPath1 = .
@@ -31,6 +33,9 @@ Global
 		SccProjectUniqueName3 = OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj
 		SccLocalPath3 = .
 		SccProjectFilePathRelativizedFromConnection3 = OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\\
+		SccProjectUniqueName4 = OSDevGrp.OSIntranet.CommonLibrary.Resources\\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = OSDevGrp.OSIntranet.CommonLibrary.Resources\\
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +54,10 @@ Global
 		{C973087B-BA1F-461B-BE7A-DB4FC03306FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C973087B-BA1F-461B-BE7A-DB4FC03306FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C973087B-BA1F-461B-BE7A-DB4FC03306FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EBCC49B-142C-4DA2-A021-ADA925975A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EBCC49B-142C-4DA2-A021-ADA925975A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EBCC49B-142C-4DA2-A021-ADA925975A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EBCC49B-142C-4DA2-A021-ADA925975A3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
