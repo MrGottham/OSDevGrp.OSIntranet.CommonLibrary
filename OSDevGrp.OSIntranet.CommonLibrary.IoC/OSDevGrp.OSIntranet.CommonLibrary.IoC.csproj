@@ -53,6 +53,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationReader.cs" />
+    <Compile Include="Configuration\ConfigurationSectionHandler.cs" />
+    <Compile Include="Configuration\Container.cs" />
     <Compile Include="Configuration\ContainerConfigurationProvider.cs" />
     <Compile Include="Configuration\ContainerConfigurationProvidersCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +69,10 @@
     <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj">
       <Project>{F692A1A2-5762-4B19-9FD2-504AE474C049}</Project>
       <Name>OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj">
+      <Project>{2EBCC49B-142C-4DA2-A021-ADA925975A3A}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

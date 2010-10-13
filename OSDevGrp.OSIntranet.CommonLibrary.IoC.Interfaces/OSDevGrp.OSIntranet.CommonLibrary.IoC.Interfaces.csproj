@@ -42,6 +42,12 @@
     <AssemblyOriginatorKeyFile>OSDevGrp.OSIntranet.CommonLibrary.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\External references\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\External references\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -49,6 +55,7 @@
     <Compile Include="Exceptions\ContainerConfigurationException.cs" />
     <Compile Include="IContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windsor\IConfigurationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />

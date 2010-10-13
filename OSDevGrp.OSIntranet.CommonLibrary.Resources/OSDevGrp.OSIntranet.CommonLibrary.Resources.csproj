@@ -46,11 +46,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.cs" />
     <Compile Include="ResourceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionMessages.da-DK.resx" />
+    <EmbeddedResource Include="ExceptionMessages.en-US.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
