@@ -5,7 +5,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
     /// <summary>
     /// Configuration of Inversion of Control configuration provider.
     /// </summary>
-    internal class ContainerConfigurationProvider : ConfigurationElement
+    public class ContainerConfigurationProvider : ConfigurationElement
     {
         #region Properties
 
