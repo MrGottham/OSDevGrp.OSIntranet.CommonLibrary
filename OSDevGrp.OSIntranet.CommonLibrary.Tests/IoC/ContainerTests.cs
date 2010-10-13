@@ -38,5 +38,33 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.IoC
             Assert.That(enumerable, Is.Not.Null);
             Assert.That(enumerable.Length, Is.EqualTo(2));
         }
+        
+        /// <summary>
+        /// Tester, at et komponent kan resolves med generisk og argument metode.
+        /// </summary>
+        [Test]
+        public void TestAtComponentKanResolvesMedGenericOgArgumentMetode()
+        {
+            var container = ContainerFactory.Create();
+
+            var someComponent = container.Resolve<ISomeComponent>();
+            Assert.That(someComponent, Is.Not.Null);
+
+            var someComponentStandard = container.Resolve(typeof (ISomeComponent));
+            Assert.That(someComponentStandard, Is.Not.Null);
+        }
+
+        /// <summary>
+        /// Tester, at extra argument på konstruktøren kan overføres på rumtime.
+        /// </summary>
+        [Test]
+        public void TestAtExtraConstructorArgumentKanOverføresRuntimeMedAnonymousType()
+        {
+            var container = ContainerFactory.Create();
+
+            const string name = "Test";
+            var someComponent = container.Resolve<ISomeOtherComponent>(new {name});
+            Assert.That(someComponent, Is.Not.Null);
+        }
     }
 }
