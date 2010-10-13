@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.Exceptions;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
@@ -27,6 +28,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
         /// <returns>Key for the element.</returns>
         protected override object GetElementKey(ConfigurationElement element)
         {
+            if (element == null)
+            {
+                throw new ArgumentNullException("element");
+            }
             return ((ContainerConfigurationProvider) element).Name;
         }
 
@@ -41,6 +46,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Configuration
         {
             get
             {
+                if (string.IsNullOrEmpty(name))
+                {
+                    throw new ArgumentNullException("name");
+                }
                 var containerConfigurationProvider = BaseGet(name) as ContainerConfigurationProvider;
                 if (containerConfigurationProvider == null)
                 {
