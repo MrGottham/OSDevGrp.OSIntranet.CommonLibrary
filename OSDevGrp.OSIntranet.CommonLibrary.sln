@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External references", "Exte
 		External references\Castle.Core.dll = External references\Castle.Core.dll
 		External references\Castle.Windsor.dll = External references\Castle.Windsor.dll
 		External references\nunit.framework.dll = External references\nunit.framework.dll
+		External references\Rhino.Mocks.dll = External references\Rhino.Mocks.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Resources", "OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj", "{2EBCC49B-142C-4DA2-A021-ADA925975A3A}"

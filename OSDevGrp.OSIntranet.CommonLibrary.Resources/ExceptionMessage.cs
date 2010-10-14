@@ -11,6 +11,9 @@
         TypeNotConfigured,
         InvalidType,
         WrongConfiguredType,
-        ConfiguredTypeDoesNotImplementInterface
+        ConfiguredTypeDoesNotImplementInterface,
+        NoCommandHandlerRegisteredForType,
+        NoCommandHandlerRegisteredForTypeAndReturnType,
+        NoQueryHandlerRegisteredForTypeAndReturnType
     }
 }

@@ -47,10 +47,13 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CommandBusException.cs" />
+    <Compile Include="Exceptions\QueryBusException.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandBus.cs" />
     <Compile Include="ICommandHandler.cs" />
     <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryBus.cs" />
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="IUnitOfWorkAware.cs" />
     <Compile Include="IView.cs" />

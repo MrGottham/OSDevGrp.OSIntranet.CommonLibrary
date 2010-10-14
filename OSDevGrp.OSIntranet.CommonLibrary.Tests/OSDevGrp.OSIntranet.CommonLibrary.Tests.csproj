@@ -53,10 +53,19 @@
     <Reference Include="nunit.framework">
       <HintPath>..\External references\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\External references\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\CommandBusTests.cs" />
+    <Compile Include="Infrastructure\QueryBusTests.cs" />
+    <Compile Include="Infrastructure\TestCommand.cs" />
+    <Compile Include="Infrastructure\TestCommandWithoutCommandHandler.cs" />
+    <Compile Include="Infrastructure\TestQuery.cs" />
+    <Compile Include="Infrastructure\TestQueryWithoutQueryHandler.cs" />
     <Compile Include="IoC\ConfigurationProviders\TestConfigurationProvider1.cs" />
     <Compile Include="IoC\ConfigurationProviders\TestConfigurationProvider2.cs" />
     <Compile Include="IoC\ContainerFactoryTests.cs" />
@@ -73,6 +82,14 @@
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.csproj">
+      <Project>{5B81E227-8796-42BD-B580-566CF29509FC}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.csproj">
+      <Project>{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj">
       <Project>{F692A1A2-5762-4B19-9FD2-504AE474C049}</Project>
       <Name>OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces</Name>
