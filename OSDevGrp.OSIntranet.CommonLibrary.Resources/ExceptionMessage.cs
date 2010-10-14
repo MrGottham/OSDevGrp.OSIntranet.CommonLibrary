@@ -14,6 +14,7 @@
         ConfiguredTypeDoesNotImplementInterface,
         NoCommandHandlerRegisteredForType,
         NoCommandHandlerRegisteredForTypeAndReturnType,
-        NoQueryHandlerRegisteredForTypeAndReturnType
+        NoQueryHandlerRegisteredForTypeAndReturnType,
+        TransactionError,
     }
 }

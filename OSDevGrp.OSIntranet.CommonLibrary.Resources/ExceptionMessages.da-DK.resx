@@ -149,6 +149,10 @@
     <value>Ingen QueryHandler registreret for forespørgelsen af typen '{0}', som returnerer typen '{1}'.</value>
     <comment>{0} = Navn på typen af forespørgelsen, {1} = Navn på typen, der returneres.</comment>
   </data>
+  <data name="TransactionError" xml:space="preserve">
+    <value>Transaktion fejlede med fejlen: {0}</value>
+    <comment>{0} = Fejlbesked.</comment>
+  </data>
   <data name="TypeNotConfigured" xml:space="preserve">
     <value>Type ikke konfigureret.</value>
   </data>
