@@ -61,10 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\CommandBusTests.cs" />
+    <Compile Include="Infrastructure\TestCommandHandler2.cs" />
     <Compile Include="Infrastructure\QueryBusTests.cs" />
     <Compile Include="Infrastructure\TestCommand.cs" />
+    <Compile Include="Infrastructure\TestCommandHandler1.cs" />
     <Compile Include="Infrastructure\TestCommandWithoutCommandHandler.cs" />
     <Compile Include="Infrastructure\TestQuery.cs" />
+    <Compile Include="Infrastructure\TestQueryHandler.cs" />
     <Compile Include="Infrastructure\TestQueryWithoutQueryHandler.cs" />
     <Compile Include="IoC\ConfigurationProviders\TestConfigurationProvider1.cs" />
     <Compile Include="IoC\ConfigurationProviders\TestConfigurationProvider2.cs" />
