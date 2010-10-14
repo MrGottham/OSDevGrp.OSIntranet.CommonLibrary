@@ -133,9 +133,21 @@
     <value>Typen '{0}' er ikke valid.</value>
     <comment>{0} = Navn på type.</comment>
   </data>
+  <data name="NoCommandHandlerRegisteredForType" xml:space="preserve">
+    <value>Ingen CommandHandlers registreret for kommandoen af typen '{0}'.</value>
+    <comment>{0} = Navn på typen af kommandoen.</comment>
+  </data>
+  <data name="NoCommandHandlerRegisteredForTypeAndReturnType" xml:space="preserve">
+    <value>Ingen CommandHandler registreret for kommandoen af typen '{0}', som returnerer typen '{1}'.</value>
+    <comment>{0} = Navn på typen af kommandoen, {1} = Navn på typen, der returneres.</comment>
+  </data>
   <data name="NoConfigurationProviderFoundWithKey" xml:space="preserve">
     <value>Ingen konfigurationsprovider fundet for nøglen '{0}'.</value>
     <comment>{0} = Nøgle.</comment>
+  </data>
+  <data name="NoQueryHandlerRegisteredForTypeAndReturnType" xml:space="preserve">
+    <value>Ingen QueryHandler registreret for forespørgelsen af typen '{0}', som returnerer typen '{1}'.</value>
+    <comment>{0} = Navn på typen af forespørgelsen, {1} = Navn på typen, der returneres.</comment>
   </data>
   <data name="TypeNotConfigured" xml:space="preserve">
     <value>Type ikke konfigureret.</value>
