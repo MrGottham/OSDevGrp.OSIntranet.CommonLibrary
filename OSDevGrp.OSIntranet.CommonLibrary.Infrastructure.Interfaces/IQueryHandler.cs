@@ -12,7 +12,7 @@
     /// </summary>
     /// <typeparam name="TQuery">Typen af forespørgelsen, som QueryHandleren håndterer.</typeparam>
     /// <typeparam name="TView">Typen af viewet, som QueryHandleren returnerer.</typeparam>
-    public interface IQueryHandler<in TQuery, out TView> where TQuery : IQuery
+    public interface IQueryHandler<in TQuery, out TView> : IQueryHandler where TQuery : IQuery
     {
         /// <summary>
         /// Eksekvering af forespørgelse.
