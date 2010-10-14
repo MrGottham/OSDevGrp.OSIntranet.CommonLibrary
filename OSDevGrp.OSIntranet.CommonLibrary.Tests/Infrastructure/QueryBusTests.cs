@@ -1,5 +1,6 @@
 ﻿using System;
 using OSDevGrp.OSIntranet.CommonLibrary.Infrastructure;
+using OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces;
 using OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.Exceptions;
 using OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces;
 using NUnit.Framework;
@@ -20,6 +21,20 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Infrastructure
         public void TestAtConstructorKasterArgumentNullExceptionHvisContainerErNull()
         {
             Assert.Throws<ArgumentNullException>(() => new QueryBus(null));
+        }
+
+        /// <summary>
+        /// Tester, at Query kalder queryhandler.
+        /// </summary>
+        [Test]
+        public void TestAtQueryKalderQueryHandler()
+        {
+            var queryBus = new QueryBus(CreateContainer());
+            var query = new TestQuery();
+            var id = queryBus.Query<TestQuery, Guid>(query);
+            Assert.That(id, Is.Not.Null);
+            Assert.That(id.GetType(), Is.EqualTo(typeof(Guid)));
+            Assert.That(id, Is.Not.EqualTo(Guid.Empty));
         }
 
         /// <summary>
@@ -50,6 +65,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Infrastructure
         private static IContainer CreateContainer()
         {
             var container = MockRepository.GenerateMock<IContainer>();
+            container.Expect(m => m.Resolve<IQueryHandler<TestQuery, Guid>>()).Return(new TestQueryHandler());
             return container;
         }
     }
