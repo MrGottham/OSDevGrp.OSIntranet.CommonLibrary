@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Transactions;
 using OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces;
 using OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.Exceptions;
 using OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces;
@@ -58,7 +59,42 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Infrastructure
                                                  typeof (TQuery), typeof (TView)));
             }
 
-            throw new System.NotImplementedException();
+            TView view;
+            try
+            {
+                var transactionOptions = new TransactionOptions
+                                             {
+                                                 IsolationLevel = IsolationLevel.Serializable,
+                                                 Timeout = new TimeSpan(0, 0, 30, 0)
+                                             };
+                using (var scope = new TransactionScope(TransactionScopeOption.Suppress, transactionOptions))
+                {
+                    view = subscriber.Query(query);
+                    scope.Complete();
+                }
+            }
+            catch (TransactionAbortedException ex)
+            {
+                throw new QueryBusException(
+                    Resource.GetExceptionMessage(ExceptionMessage.TransactionError, FormatMessage(ex)), ex);
+            }
+            return view;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Returnerer formateret fejlbesked for en exception.
+        /// </summary>
+        /// <param name="ex">Exception.</param>
+        /// <returns>Formateret fejlbesked.</returns>
+        private static string FormatMessage(Exception ex)
+        {
+            return ex.InnerException != null
+                       ? string.Format("{0} -> {1}", ex.Message, FormatMessage(ex.InnerException))
+                       : ex.Message;
         }
 
         #endregion

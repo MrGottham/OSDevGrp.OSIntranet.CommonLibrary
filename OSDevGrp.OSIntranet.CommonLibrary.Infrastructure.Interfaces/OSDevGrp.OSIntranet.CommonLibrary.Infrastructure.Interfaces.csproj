@@ -58,6 +58,7 @@
     <Compile Include="IUnitOfWorkAware.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RethrowExceptionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OSDevGrp.OSIntranet.CommonLibrary.snk" />
