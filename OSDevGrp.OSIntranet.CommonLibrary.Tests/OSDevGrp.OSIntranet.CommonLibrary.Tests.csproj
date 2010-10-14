@@ -79,6 +79,7 @@
     <Compile Include="IoC\TestObjects\SomeOtherComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\ResourceTests.cs" />
+    <Compile Include="Wcf\ConfigurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -104,6 +105,10 @@
     <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj">
       <Project>{2EBCC49B-142C-4DA2-A021-ADA925975A3A}</Project>
       <Name>OSDevGrp.OSIntranet.CommonLibrary.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Wcf\OSDevGrp.OSIntranet.CommonLibrary.Wcf.csproj">
+      <Project>{9F53085B-094C-4D19-B7F6-E15F96571E33}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.Wcf</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

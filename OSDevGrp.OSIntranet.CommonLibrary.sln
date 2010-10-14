@@ -28,9 +28,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Infrastructure", "OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.csproj", "{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Wcf", "OSDevGrp.OSIntranet.CommonLibrary.Wcf\OSDevGrp.OSIntranet.CommonLibrary.Wcf.csproj", "{9F53085B-094C-4D19-B7F6-E15F96571E33}"
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = OSDevGrp.OSIntranet.CommonLibrary.Domain\\OSDevGrp.OSIntranet.CommonLibrary.Domain.csproj
 		SccLocalPath1 = .
@@ -53,6 +55,9 @@ Global
 		SccProjectUniqueName7 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.csproj
 		SccLocalPath7 = .
 		SccProjectFilePathRelativizedFromConnection7 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\\
+		SccProjectUniqueName8 = OSDevGrp.OSIntranet.CommonLibrary.Wcf\\OSDevGrp.OSIntranet.CommonLibrary.Wcf.csproj
+		SccLocalPath8 = .
+		SccProjectFilePathRelativizedFromConnection8 = OSDevGrp.OSIntranet.CommonLibrary.Wcf\\
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +92,10 @@ Global
 		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEA38E6A-4A70-40C7-9824-D2B09FD6E41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F53085B-094C-4D19-B7F6-E15F96571E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F53085B-094C-4D19-B7F6-E15F96571E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F53085B-094C-4D19-B7F6-E15F96571E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F53085B-094C-4D19-B7F6-E15F96571E33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
