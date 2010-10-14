@@ -29,6 +29,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Infrastructure
         /// </summary>
         /// <param name="command">Kommando.</param>
         /// <param name="exception">Exception, der blev kastet.</param>
+        [RethrowException(typeof(NullReferenceException))]
         public void HandleException(TestCommand command, Exception exception)
         {
             command.Modified = false;
