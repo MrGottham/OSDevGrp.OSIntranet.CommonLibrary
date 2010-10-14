@@ -104,9 +104,40 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Infrastructure
 
             command1.Modified = false;
             command2.Modified = false;
-            commandBus.Publish<TestCommand, Guid>(command1);
-            Assert.That(command1, Is.Not.Null);
-            Assert.That(command1.Modified, Is.False);
+            Assert.Throws<CommandBusException>(() => commandBus.Publish<TestCommand, Guid>(command1));
+        }
+
+        /// <summary>
+        /// Tester, at Publish "rethrows" exceptions.
+        /// </summary>
+        [Test]
+        public void TestAtPublishRethrowsExceptions()
+        {
+            var commandBus = new CommandBus(CreateContainer());
+            var command1 = new TestCommand
+                               {
+                                   Modified = false,
+                                  ExceptionToThrow = new NullReferenceException()
+                               };
+            var command2 = new TestCommand
+                               {
+                                   Modified = false,
+                                   ExceptionToThrow = new NullReferenceException()
+                               };
+            Assert.Throws<NullReferenceException>(() => commandBus.Publish(command1));
+
+            command1.Modified = false;
+            command2.Modified = false;
+            var commands = new List<TestCommand>
+                               {
+                                   command1,
+                                   command2
+                               };
+            Assert.Throws<NullReferenceException>(() => commandBus.Publish<TestCommand>(commands));
+
+            command1.Modified = false;
+            command2.Modified = false;
+            Assert.Throws<NullReferenceException>(() => commandBus.Publish<TestCommand, Guid>(command1));
         }
 
         /// <summary>

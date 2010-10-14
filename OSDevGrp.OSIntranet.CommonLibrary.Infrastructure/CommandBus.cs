@@ -166,7 +166,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Infrastructure
                     var scope = new TransactionScope(mainSubscriber.TransactionScopeOption,
                                                      mainSubscriber.TransactionOptions))
                 {
-                    returnValue = mainSubscriber.Execute(command);
+                    returnValue = ExecuteAsUnitOfWork(mainSubscriber, command);
                     ExecuteCommandHandlers(extraSubscribers, command);
                     scope.Complete();
                 }
@@ -213,7 +213,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Infrastructure
             }
             foreach (var commandHandler in commandHandlers)
             {
-                ExecuteAsUnitOfWOrk(commandHandler, command);
+                ExecuteAsUnitOfWork(commandHandler, command);
             }
         }
 
@@ -223,7 +223,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Infrastructure
         /// <typeparam name="TCommand">Typen af kommandoen, som skal eksekveres.</typeparam>
         /// <param name="commandHandler">Commandhandleren, der ska eksekveres.</param>
         /// <param name="command">Kommando, der skal eksekveres.</param>
-        private static void ExecuteAsUnitOfWOrk<TCommand>(ICommandHandler<TCommand> commandHandler, TCommand command) where TCommand : class, ICommand
+        private static void ExecuteAsUnitOfWork<TCommand>(ICommandHandler<TCommand> commandHandler, TCommand command) where TCommand : class, ICommand
         {
             if (commandHandler == null)
             {
@@ -251,6 +251,48 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Infrastructure
                 }
                 scope.Complete();
             }
+        }
+
+        /// <summary>
+        /// Eksekvering af en commandhandler til kommandoen.
+        /// </summary>
+        /// <typeparam name="TCommand">Typen af kommandoen, som skal eksekveres.</typeparam>
+        /// <typeparam name="TReturnValue">Typen af værdien, som kommandoen skal returnerer.</typeparam>
+        /// <param name="commandHandler">Commandhandleren, der ska eksekveres.</param>
+        /// <param name="command">Kommando, der skal eksekveres.</param>
+        /// <returns>Værdi, som kommandoen returnerer efter eksekvering.</returns>
+        private static TReturnValue ExecuteAsUnitOfWork<TCommand, TReturnValue>(ICommandHandler<TCommand, TReturnValue> commandHandler, TCommand command) where TCommand : class, ICommand
+        {
+            if (commandHandler == null)
+            {
+                throw new ArgumentNullException("commandHandler");
+            }
+            if (command == null)
+            {
+                throw new ArgumentNullException("command");
+            }
+            using (
+                var scope = new TransactionScope(commandHandler.TransactionScopeOption,
+                                                 commandHandler.TransactionOptions))
+            {
+                try
+                {
+                    var returnValue = commandHandler.Execute(command);
+                    scope.Complete();
+                    return returnValue;
+                }
+                catch (Exception ex)
+                {
+                    if (IsExceptionMarkedForRethrow(commandHandler, ex))
+                    {
+                        throw;
+                    }
+                    commandHandler.HandleException(command, ex);
+                }
+            }
+            throw new CommandBusException(
+                Resource.GetExceptionMessage(ExceptionMessage.ExceptionNotHandledByCommandHandler, typeof (TCommand),
+                                             typeof (TReturnValue)));
         }
 
         /// <summary>
