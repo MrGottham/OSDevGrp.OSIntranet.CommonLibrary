@@ -90,6 +90,19 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         #region Methods
 
         /// <summary>
+        /// Tekst for konto.
+        /// </summary>
+        /// <returns>Tekst for konto.</returns>
+        public override string ToString()
+        {
+            if (!string.IsNullOrEmpty(Kontonummer) && !string.IsNullOrEmpty(Kontonavn))
+            {
+                return string.Format("{0} {1}", Kontonummer, Kontonavn);
+            }
+            return string.IsNullOrEmpty(Kontonavn) ? string.Empty : Kontonavn;
+        }
+
+        /// <summary>
         /// Sætter beskrivelsen på kontoen.
         /// </summary>
         /// <param name="beskrivelse">Beskrivelse.</param>

@@ -176,6 +176,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         #region Methods
 
         /// <summary>
+        /// Navn på adressen.
+        /// </summary>
+        /// <returns>Navn på adressen.</returns>
+        public override string ToString()
+        {
+            return Navn;
+        }
+
+        /// <summary>
         /// Sætter adresseoplysninger.
         /// </summary>
         /// <param name="adresse1">Adresse (linje 1).</param>

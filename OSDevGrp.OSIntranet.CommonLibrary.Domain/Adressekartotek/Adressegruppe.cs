@@ -60,5 +60,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Navn på adressegruppen.
+        /// </summary>
+        /// <returns>Navn på adressegruppen.</returns>
+        public override string ToString()
+        {
+            return Navn;
+        }
+
+        #endregion
     }
 }

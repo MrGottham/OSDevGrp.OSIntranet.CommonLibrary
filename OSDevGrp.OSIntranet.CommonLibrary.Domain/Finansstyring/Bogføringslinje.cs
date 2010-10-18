@@ -115,6 +115,17 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         #region Methods
 
         /// <summary>
+        /// Tekst for bogføringslinje.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return string.IsNullOrEmpty(Tekst)
+                       ? Dato.ToShortDateString()
+                       : string.Format("{0} {1}", Dato.ToShortDateString(), Tekst);
+        }
+
+        /// <summary>
         /// Sætter konto, hvorpå linjen er bogført.
         /// </summary>
         /// <param name="konto">Konto.</param>

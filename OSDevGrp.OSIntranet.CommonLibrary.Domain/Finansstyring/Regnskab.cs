@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Comparers;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
@@ -63,13 +65,23 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                return new ReadOnlyCollection<KontoBase>(_konti);
+                var comparer = new KontoComparer();
+                return new ReadOnlyCollection<KontoBase>(_konti.OrderBy(m => m, comparer).ToArray());
             }
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Navn på regnskab.
+        /// </summary>
+        /// <returns>Navn på regnskab.</returns>
+        public override string ToString()
+        {
+            return Navn;
+        }
 
         /// <summary>
         /// Tilføjer en konto til regnskabet.

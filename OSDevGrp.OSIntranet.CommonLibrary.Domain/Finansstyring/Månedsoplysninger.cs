@@ -1,4 +1,7 @@
-﻿namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
+﻿using System;
+using System.Threading;
+
+namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
     /// <summary>
     /// Månedsoplysninger.
@@ -40,6 +43,20 @@
         {
             get;
             protected  set;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Tekst for månedsoplysninger.
+        /// </summary>
+        /// <returns>Tekst for månedsoplysninger.</returns>
+        public override string ToString()
+        {
+            var dateForMonth = new DateTime(År, Måned, 1);
+            return dateForMonth.ToString("MMMM yyyy", Thread.CurrentThread.CurrentUICulture.DateTimeFormat);
         }
 
         #endregion
