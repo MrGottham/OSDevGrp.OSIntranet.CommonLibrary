@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Comparers;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
 {
@@ -72,7 +74,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         {
             get
             {
-                return new ReadOnlyCollection<Person>(_personer);
+                var comparer = new AdresseComparer();
+                return new ReadOnlyCollection<Person>(_personer.OrderBy(m => m, comparer).ToArray());
             }
         }
 

@@ -49,5 +49,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Navn på kontogruppen.
+        /// </summary>
+        /// <returns>Navn på kontogruppen.</returns>
+        public override string ToString()
+        {
+            return Navn;
+        }
+
+        #endregion
     }
 }

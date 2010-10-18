@@ -68,5 +68,26 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Tekst for postnummeret.
+        /// </summary>
+        /// <returns>Tekst for postnummeret</returns>
+        public override string ToString()
+        {
+            if (!string.IsNullOrEmpty(Landekode) && !string.IsNullOrEmpty(Postnr) && !string.IsNullOrEmpty(By))
+            {
+                return string.Format("{0}-{1}  {2}", Landekode, Postnr, By);
+            }
+            if (!string.IsNullOrEmpty(Postnr) && !string.IsNullOrEmpty(By))
+            {
+                return string.Format("{0}  {1}", Postnr, By);
+            }
+            return string.IsNullOrEmpty(By) ? string.Empty : By;
+        }
+
+        #endregion
     }
 }

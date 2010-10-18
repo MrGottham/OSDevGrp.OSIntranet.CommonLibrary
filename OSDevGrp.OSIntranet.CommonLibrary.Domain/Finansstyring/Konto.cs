@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Comparers;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
@@ -57,7 +59,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                return new ReadOnlyCollection<Kreditoplysninger>(_kreditoplysninger);
+                var comparer = new MånedsoplysningerComparer();
+                return new ReadOnlyCollection<Kreditoplysninger>(_kreditoplysninger
+                                                                     .OrderByDescending(m => m, comparer)
+                                                                     .ToArray());
             }
         }
 
@@ -68,7 +73,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                return new ReadOnlyCollection<Bogføringslinje>(_bogføringslinjer);
+                var comparer = new BogføringslinjeComparer();
+                return new ReadOnlyCollection<Bogføringslinje>(_bogføringslinjer
+                                                                   .OrderByDescending(m => m, comparer)
+                                                                   .ToArray());
             }
         }
 

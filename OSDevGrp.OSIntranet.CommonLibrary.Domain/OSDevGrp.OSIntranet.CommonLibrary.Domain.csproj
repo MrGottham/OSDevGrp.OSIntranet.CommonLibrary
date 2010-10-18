@@ -52,6 +52,11 @@
     <Compile Include="Adressekartotek\Firma.cs" />
     <Compile Include="Adressekartotek\Person.cs" />
     <Compile Include="Adressekartotek\Postnummer.cs" />
+    <Compile Include="Comparers\AdresseComparer.cs" />
+    <Compile Include="Comparers\BogføringslinjeComparer.cs" />
+    <Compile Include="Comparers\KontoComparer.cs" />
+    <Compile Include="Comparers\MånedsoplysningerComparer.cs" />
+    <Compile Include="Comparers\RegnskabComparer.cs" />
     <Compile Include="Enums\Kontogruppetype.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Finansstyring\Bogføringslinje.cs" />

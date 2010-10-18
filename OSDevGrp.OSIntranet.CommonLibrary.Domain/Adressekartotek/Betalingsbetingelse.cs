@@ -44,5 +44,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Navn på betalingsbetingelse.
+        /// </summary>
+        /// <returns>Navn på betalingsbetingelse.</returns>
+        public override string ToString()
+        {
+            return Navn;
+        }
+
+        #endregion
     }
 }
