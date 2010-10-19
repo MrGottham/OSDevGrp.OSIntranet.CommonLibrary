@@ -16,7 +16,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="måned">Måned.</param>
         /// <param name="indtægter">Indtægter.</param>
         /// <param name="udgifter">Udgifter.</param>
-        public Budgetoplysninger(int år, int måned, double indtægter, double udgifter)
+        public Budgetoplysninger(int år, int måned, decimal indtægter, decimal udgifter)
             : base(år, måned)
         {
             // ReSharper disable DoNotCallOverridableMethodsInConstructor
@@ -41,7 +41,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Indtægter.
         /// </summary>
-        public virtual double Indtægter
+        public virtual decimal Indtægter
         {
             get;
             protected set;
@@ -50,7 +50,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Udgifter.
         /// </summary>
-        public virtual double Udgifter
+        public virtual decimal Udgifter
         {
             get;
             protected set;
