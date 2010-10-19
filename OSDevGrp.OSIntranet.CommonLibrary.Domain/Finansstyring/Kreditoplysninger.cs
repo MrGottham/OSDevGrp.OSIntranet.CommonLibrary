@@ -15,7 +15,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="år">Årstal.</param>
         /// <param name="måned">Måned.</param>
         /// <param name="kredit">Kredit.</param>
-        public Kreditoplysninger(int år, int måned, double kredit) : base(år, måned)
+        public Kreditoplysninger(int år, int måned, decimal kredit) : base(år, måned)
         {
             // ReSharper disable DoNotCallOverridableMethodsInConstructor
             Kredit = kredit;
@@ -38,7 +38,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Kredit.
         /// </summary>
-        public virtual double Kredit
+        public virtual decimal Kredit
         {
             get;
             protected set;

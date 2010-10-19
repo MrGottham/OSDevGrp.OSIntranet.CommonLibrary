@@ -18,7 +18,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="tekst">Bogføringstekst.</param>
         /// <param name="debit">Debitbeløb.</param>
         /// <param name="kredit">Kreditbeløb.</param>
-        public Bogføringslinje(int løbenummer, DateTime dato, string bilag, string tekst, double debit, double kredit)
+        public Bogføringslinje(int løbenummer, DateTime dato, string bilag, string tekst, decimal debit, decimal kredit)
         {
             if (string.IsNullOrEmpty(tekst))
             {
@@ -95,7 +95,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Debitbeløb.
         /// </summary>
-        public virtual double Debit
+        public virtual decimal Debit
         {
             get;
             protected set;
@@ -104,7 +104,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Kreditbeløb.
         /// </summary>
-        public virtual double Kredit
+        public virtual decimal Kredit
         {
             get;
             protected set;
