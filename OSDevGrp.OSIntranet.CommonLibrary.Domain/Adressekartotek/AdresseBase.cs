@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Comparers;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
 {
@@ -7,7 +12,24 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
     /// </summary>
     public abstract class AdresseBase
     {
-        #region Constructor
+        #region Private variables
+
+        private readonly IList<Bogføringslinje> _bogføringslinjer = new List<Bogføringslinje>();
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Danner en ny adresse.
+        /// </summary>
+        /// <param name="nummer">Unik identifikation af adressen.</param>
+        protected AdresseBase(int nummer)
+        {
+            // ReSharper disable DoNotCallOverridableMethodsInConstructor
+            Nummer = nummer;
+            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+        }
 
         /// <summary>
         /// Danner en ny adresse.
@@ -171,6 +193,20 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
             protected set;
         }
 
+        /// <summary>
+        /// Bogføringslinjer.
+        /// </summary>
+        public virtual IList<Bogføringslinje> Bogføringslinjer
+        {
+            get
+            {
+                var comparer = new BogføringslinjeComparer();
+                return new ReadOnlyCollection<Bogføringslinje>(_bogføringslinjer
+                                                                   .OrderByDescending(m => m, comparer)
+                                                                   .ToArray());
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -262,6 +298,20 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         public virtual void SætFilofaxAdresselabel(bool filofaxAdresselabel)
         {
             FilofaxAdresselabel = filofaxAdresselabel;
+        }
+        
+        /// <summary>
+        /// Tilføjer en bogføringslinje til adressen.
+        /// </summary>
+        /// <param name="bogføringslinje">Bogføringslinje.</param>
+        public virtual void TilføjBogføringslinje(Bogføringslinje bogføringslinje)
+        {
+            if (bogføringslinje == null)
+            {
+                throw new ArgumentNullException("bogføringslinje");
+            }
+            bogføringslinje.SætAdresse(this);
+            _bogføringslinjer.Add(bogføringslinje);
         }
 
         #endregion
