@@ -1,4 +1,5 @@
 ﻿using System;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
@@ -110,6 +111,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             protected set;
         }
 
+        /// <summary>
+        /// Adresse, som linjen er bogført til.
+        /// </summary>
+        public virtual AdresseBase Adresse
+        {
+            get;
+            protected set;
+        }
+
         #endregion
 
         #region Methods
@@ -141,7 +151,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Sætter budgetkonti, hvorpå linjen er bogført.
         /// </summary>
-        /// <param name="budgetkonto"></param>
+        /// <param name="budgetkonto">Budgetkonto.</param>
         internal virtual void SætBudgetkonto(Budgetkonto budgetkonto)
         {
             if (budgetkonto == null)
@@ -149,6 +159,19 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 throw new ArgumentNullException("budgetkonto");
             }
             Budgetkonto = budgetkonto;
+        }
+
+        /// <summary>
+        /// Sætter adresse, som linjen er bogført til.
+        /// </summary>
+        /// <param name="adresse">Adresse.</param>
+        internal virtual void SætAdresse(AdresseBase adresse)
+        {
+            if (adresse == null)
+            {
+                throw new ArgumentNullException("adresse");
+            }
+            Adresse = adresse;
         }
 
         #endregion
