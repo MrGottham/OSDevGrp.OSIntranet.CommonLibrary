@@ -71,6 +71,17 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         }
 
         /// <summary>
+        /// Disponibel beløb pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal DisponibelPrStatusdato
+        {
+            get
+            {
+                return KreditPrStatusdato + SaldoPrStatusdato;
+            }
+        }
+
+        /// <summary>
         /// Kreditoplysninger.
         /// </summary>
         public virtual IList<Kreditoplysninger> Kreditoplysninger
