@@ -9,7 +9,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// <summary>
     /// Konto.
     /// </summary>
-    public class Konto : KontoBase
+    public class Konto : KontoBase, ICalculatable
     {
         #region Private variables
 
@@ -53,6 +53,24 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         }
 
         /// <summary>
+        /// Kredit pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal KreditPrStatusdato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Saldo pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal SaldoPrStatusdato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
         /// Kreditoplysninger.
         /// </summary>
         public virtual IList<Kreditoplysninger> Kreditoplysninger
@@ -78,6 +96,26 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                                                                    .OrderByDescending(m => m, comparer)
                                                                    .ToArray());
             }
+        }
+
+        #endregion
+
+        #region ICalculatable Members
+
+        /// <summary>
+        /// Kalkulering af status på en givent tidspunkt.
+        /// </summary>
+        /// <param name="statusDato">Statusdato.</param>
+        public virtual void Calculate(DateTime statusDato)
+        {
+            // Beregn kredit pr. statusdato.
+            var kreditoplysninger = Kreditoplysninger
+                .SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
+            KreditPrStatusdato = kreditoplysninger == null ? 0M : kreditoplysninger.Kredit;
+            // Beregn saldo pr. statusdato.
+            SaldoPrStatusdato = Bogføringslinjer
+                .Where(m => m.Dato.CompareTo(statusDato) <= 0)
+                .Sum(m => m.Debit - m.Kredit);
         }
 
         #endregion
