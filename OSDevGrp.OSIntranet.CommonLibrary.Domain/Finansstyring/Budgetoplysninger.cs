@@ -70,7 +70,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Bogført beløb pr. statusdato (beregnes ved hjælp af metoden Calculate på en budgetkonto).
         /// </summary>
-        public virtual decimal BogførtPrStatusDato
+        public virtual decimal BogførtPrStatusdato
         {
             get;
             protected set;
@@ -79,11 +79,11 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Disponibel beløb pr. statusdato (beregnes ved hjælp af metoden Calculate på en budgetkonto).
         /// </summary>
-        public virtual decimal DisponibelPrStatusDato
+        public virtual decimal DisponibelPrStatusdato
         {
             get
             {
-                return Math.Max(0, Math.Abs(Budget) - Math.Abs(BogførtPrStatusDato));
+                return Math.Max(0, Math.Abs(Budget) - Math.Abs(BogførtPrStatusdato));
             }
         }
 
@@ -107,10 +107,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Sætter bogført beløb pr. statusdato.
         /// </summary>
-        /// <param name="bogførtPrStatusDato">Bogført beløb pr. statusdato.</param>
-        internal virtual void SætBogførtPrStatusDato(decimal bogførtPrStatusDato)
+        /// <param name="bogførtPrStatusdato">Bogført beløb pr. statusdato.</param>
+        internal virtual void SætBogførtPrStatusdato(decimal bogførtPrStatusdato)
         {
-            BogførtPrStatusDato = bogførtPrStatusDato;
+            BogførtPrStatusdato = bogførtPrStatusdato;
         }
 
         #endregion
