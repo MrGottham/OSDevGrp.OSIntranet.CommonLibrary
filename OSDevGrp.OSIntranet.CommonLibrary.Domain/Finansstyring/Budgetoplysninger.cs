@@ -56,6 +56,37 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             protected set;
         }
 
+        /// <summary>
+        /// Budget.
+        /// </summary>
+        public virtual decimal Budget
+        {
+            get
+            {
+                return Indtægter - Udgifter;
+            }
+        }
+
+        /// <summary>
+        /// Bogført beløb pr. statusdato (beregnes ved hjælp af metoden Calculate på en budgetkonto).
+        /// </summary>
+        public virtual decimal BogførtPrStatusDato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Disponibel beløb pr. statusdato (beregnes ved hjælp af metoden Calculate på en budgetkonto).
+        /// </summary>
+        public virtual decimal DisponibelPrStatusDato
+        {
+            get
+            {
+                return Math.Abs(Budget) - Math.Abs(BogførtPrStatusDato);
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -71,6 +102,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 throw new ArgumentNullException("budgetkonto");
             }
             Budgetkonto = budgetkonto;
+        }
+
+        /// <summary>
+        /// Sætter bogført beløb pr. statusdato.
+        /// </summary>
+        /// <param name="bogførtPrStatusDato">Bogført beløb pr. statusdato.</param>
+        internal virtual void SætBogførtPrStatusDato(decimal bogførtPrStatusDato)
+        {
+            BogførtPrStatusDato = bogførtPrStatusDato;
         }
 
         #endregion
