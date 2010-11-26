@@ -9,7 +9,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// <summary>
     /// Budgetkonto.
     /// </summary>
-    public class Budgetkonto : KontoBase
+    public class Budgetkonto : KontoBase, ICalculatable
     {
         #region Private variables
 
@@ -53,6 +53,35 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         }
 
         /// <summary>
+        /// Budget pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BudgetPrStatusDato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Bogført beløb pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BogførtPrStatusDato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Disponibel beløb pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal DisponibelPrStatusDato
+        {
+            get
+            {
+                return Math.Abs(BudgetPrStatusDato) - Math.Abs(BogførtPrStatusDato);
+            }
+        }
+
+        /// <summary>
         /// Budgetoplysninger.
         /// </summary>
         public virtual IList<Budgetoplysninger> Budgetoplysninger
@@ -78,6 +107,38 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                                                                    .OrderByDescending(m => m, comparer)
                                                                    .ToArray());
             }
+        }
+
+        #endregion
+
+        #region ICalculatable Members
+
+        /// <summary>
+        /// Kalkulering af status på et givent tidspunkt.
+        /// </summary>
+        /// <param name="statusDato">Statusdato.</param>
+        public void Calculate(DateTime statusDato)
+        {
+            foreach (var budgetoplysninger in Budgetoplysninger)
+            {
+                if (budgetoplysninger.År > statusDato.Year ||
+                    (budgetoplysninger.År == statusDato.Year && budgetoplysninger.Måned > statusDato.Month))
+                {
+                    budgetoplysninger.SætBogførtPrStatusDato(0);
+                    continue;
+                }
+                var fraDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned, 1);
+                var tilDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned,
+                                           DateTime.DaysInMonth(budgetoplysninger.År, budgetoplysninger.Måned));
+                var bogført = Bogføringslinjer
+                    .Where(m => m.Dato.Date.CompareTo(fraDato) >= 0 && m.Dato.Date.CompareTo(tilDato) <= 0)
+                    .Sum(m => m.Debit - m.Kredit);
+                budgetoplysninger.SætBogførtPrStatusDato(bogført);
+            }
+            var aktuelBudgetoplysninger = Budgetoplysninger
+                .SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
+            BudgetPrStatusDato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.Budget;
+            BogførtPrStatusDato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.BogførtPrStatusDato;
         }
 
         #endregion

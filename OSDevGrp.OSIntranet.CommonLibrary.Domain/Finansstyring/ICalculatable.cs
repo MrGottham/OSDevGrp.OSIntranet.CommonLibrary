@@ -8,7 +8,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     public interface ICalculatable
     {
         /// <summary>
-        /// Kalkulering af status på en givent tidspunkt.
+        /// Kalkulering af status på et givent tidspunkt.
         /// </summary>
         /// <param name="statusDato">Statusdato.</param>
         void Calculate(DateTime statusDato);

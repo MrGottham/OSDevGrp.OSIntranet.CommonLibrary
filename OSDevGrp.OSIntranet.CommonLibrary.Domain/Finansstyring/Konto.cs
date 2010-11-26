@@ -114,7 +114,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         #region ICalculatable Members
 
         /// <summary>
-        /// Kalkulering af status på en givent tidspunkt.
+        /// Kalkulering af status på et givent tidspunkt.
         /// </summary>
         /// <param name="statusDato">Statusdato.</param>
         public virtual void Calculate(DateTime statusDato)
