@@ -77,7 +77,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                return Math.Abs(BudgetPrStatusDato) - Math.Abs(BogførtPrStatusDato);
+                return Math.Max(0, Math.Abs(BudgetPrStatusDato) - Math.Abs(BogførtPrStatusDato));
             }
         }
 
