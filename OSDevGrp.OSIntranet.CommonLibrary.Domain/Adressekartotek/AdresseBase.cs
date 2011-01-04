@@ -10,7 +10,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
     /// <summary>
     /// Basisklasse for en adresse.
     /// </summary>
-    public abstract class AdresseBase
+    public abstract class AdresseBase : ICalculatable
     {
         #region Private variables
 
@@ -194,6 +194,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         }
 
         /// <summary>
+        /// Saldo pr. statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal SaldoPrStatusdato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
         /// Bogføringslinjer.
         /// </summary>
         public virtual IList<Bogføringslinje> Bogføringslinjer
@@ -205,6 +214,21 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
                                                                    .OrderByDescending(m => m, comparer)
                                                                    .ToArray());
             }
+        }
+
+        #endregion
+
+        #region ICalculatable Members
+
+        /// <summary>
+        /// Kalkulering af status på et givent tidspunkt.
+        /// </summary>
+        /// <param name="statusDato">Statusdato.</param>
+        public void Calculate(DateTime statusDato)
+        {
+            SaldoPrStatusdato = Bogføringslinjer
+                .Where(m => m.Dato.CompareTo(statusDato) <= 0)
+                .Sum(m => m.Debit - m.Kredit);
         }
 
         #endregion
