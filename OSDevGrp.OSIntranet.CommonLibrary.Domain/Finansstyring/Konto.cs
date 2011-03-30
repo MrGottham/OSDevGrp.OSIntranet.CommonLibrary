@@ -119,13 +119,23 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="statusDato">Statusdato.</param>
         public virtual void Calculate(DateTime statusDato)
         {
+            Calculate(statusDato, int.MaxValue);
+        }
+
+        /// <summary>
+        /// Kalkulering af status på et givent tidspunkt.
+        /// </summary>
+        /// <param name="statusDato">Statusdato.</param>
+        /// <param name="løbenr">Den unikke identifikation af bogføringslinjen, som indgår i beregningen.</param>
+        public void Calculate(DateTime statusDato, int løbenr)
+        {
             // Beregn kredit pr. statusdato.
             var kreditoplysninger = Kreditoplysninger
                 .SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
             KreditPrStatusdato = kreditoplysninger == null ? 0M : kreditoplysninger.Kredit;
             // Beregn saldo pr. statusdato.
             SaldoPrStatusdato = Bogføringslinjer
-                .Where(m => m.Dato.CompareTo(statusDato) <= 0)
+                .Where(m => m.Løbenummer <= løbenr && m.Dato.CompareTo(statusDato) <= 0)
                 .Sum(m => m.Debit - m.Kredit);
         }
 

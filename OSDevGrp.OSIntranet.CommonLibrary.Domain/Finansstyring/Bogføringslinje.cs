@@ -8,6 +8,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public class Bogføringslinje
     {
+        #region Private variables
+
+        private Konto _konto;
+        private Budgetkonto _budgetkonto;
+        private AdresseBase _adresse;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -71,8 +79,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual Konto Konto
         {
-            get;
-            protected set;
+            get
+            {
+                if (_konto != null)
+                {
+                    _konto.Calculate(Dato, Løbenummer);
+                }
+                return _konto;
+            }
+            protected set
+            {
+                _konto = value;
+            }
         }
 
         /// <summary>
@@ -89,8 +107,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual Budgetkonto Budgetkonto
         {
-            get;
-            protected set;
+            get
+            {
+                if (_budgetkonto != null)
+                {
+                    _budgetkonto.Calculate(Dato, Løbenummer);
+                }
+                return _budgetkonto;
+            }
+            protected set
+            {
+                _budgetkonto = value;
+            }
         }
 
         /// <summary>
@@ -116,8 +144,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual AdresseBase Adresse
         {
-            get;
-            protected set;
+            get
+            {
+                if (_adresse != null)
+                {
+                    _adresse.Calculate(Dato, Løbenummer);
+                }
+                return _adresse;
+            }
+            protected set
+            {
+                _adresse = value;
+            }
         }
 
         #endregion
