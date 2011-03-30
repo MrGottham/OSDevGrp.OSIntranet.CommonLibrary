@@ -119,6 +119,16 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="statusDato">Statusdato.</param>
         public void Calculate(DateTime statusDato)
         {
+            Calculate(statusDato, int.MaxValue);
+        }
+
+        /// <summary>
+        /// Kalkulering af status på et givent tidspunkt.
+        /// </summary>
+        /// <param name="statusDato">Statusdato.</param>
+        /// <param name="løbenr">Den unikke identifikation af bogføringslinjen, som indgår i beregningen.</param>
+        public void Calculate(DateTime statusDato, int løbenr)
+        {
             foreach (var budgetoplysninger in Budgetoplysninger)
             {
                 if (budgetoplysninger.År > statusDato.Year ||
@@ -131,12 +141,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 var tilDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned,
                                            DateTime.DaysInMonth(budgetoplysninger.År, budgetoplysninger.Måned));
                 var bogført = Bogføringslinjer
-                    .Where(m => m.Dato.Date.CompareTo(fraDato) >= 0 && m.Dato.Date.CompareTo(tilDato) <= 0)
+                    .Where(
+                        m =>
+                        m.Løbenummer <= løbenr && m.Dato.Date.CompareTo(fraDato) >= 0 &&
+                        m.Dato.Date.CompareTo(tilDato) <= 0)
                     .Sum(m => m.Debit - m.Kredit);
                 budgetoplysninger.SætBogførtPrStatusdato(bogført);
             }
-            var aktuelBudgetoplysninger = Budgetoplysninger
-                .SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
+            var aktuelBudgetoplysninger =
+                Budgetoplysninger.SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
             BudgetPrStatusdato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.Budget;
             BogførtPrStatusdato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.BogførtPrStatusdato;
         }

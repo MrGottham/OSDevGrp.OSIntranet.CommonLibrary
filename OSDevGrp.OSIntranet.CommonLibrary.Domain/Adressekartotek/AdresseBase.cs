@@ -226,8 +226,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// <param name="statusDato">Statusdato.</param>
         public void Calculate(DateTime statusDato)
         {
+            Calculate(statusDato, int.MaxValue);
+        }
+
+        /// <summary>
+        /// Kalkulering af status på et givent tidspunkt.
+        /// </summary>
+        /// <param name="statusDato">Statusdato.</param>
+        /// <param name="løbenr">Den unikke identifikation af bogføringslinjen, som indgår i beregningen.</param>
+        public void Calculate(DateTime statusDato, int løbenr)
+        {
             SaldoPrStatusdato = Bogføringslinjer
-                .Where(m => m.Dato.CompareTo(statusDato) <= 0)
+                .Where(m => m.Løbenummer <= løbenr && m.Dato.CompareTo(statusDato) <= 0)
                 .Sum(m => m.Debit - m.Kredit);
         }
 
