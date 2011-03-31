@@ -2,6 +2,7 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
+using OSDevGrp.OSIntranet.CommonLibrary.Resources;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Wcf
 {
@@ -28,7 +29,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.IoC.Wcf
             {
                 throw new ArgumentNullException("serviceType");
             }
-            _serviceType = serviceType;
+            var interfaces = serviceType.GetInterfaces();
+            if (interfaces.Length == 0)
+            {
+                throw new Exception(Resource.GetExceptionMessage(ExceptionMessage.NoInterfacesOnType, serviceType.Name));
+            }
+            _serviceType = interfaces[0];
         }
 
         #endregion

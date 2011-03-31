@@ -149,6 +149,10 @@
     <value>No configuration provider found with the key '{0}'.</value>
     <comment>{0} = Key.</comment>
   </data>
+  <data name="NoInterfacesOnType" xml:space="preserve">
+    <value>No defined interfaces on the type '{0}'.</value>
+    <comment>{0} =Name of type.</comment>
+  </data>
   <data name="NoQueryHandlerRegisteredForTypeAndReturnType" xml:space="preserve">
     <value>No QueryHandler registered for query with the type '{0}' that return type of '{1}'.</value>
     <comment>{0} = Name for the type of the query, {1} = Name for the type to return.</comment>

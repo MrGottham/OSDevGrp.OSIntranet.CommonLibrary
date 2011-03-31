@@ -149,6 +149,10 @@
     <value>Ingen konfigurationsprovider fundet for nøglen '{0}'.</value>
     <comment>{0} = Nøgle.</comment>
   </data>
+  <data name="NoInterfacesOnType" xml:space="preserve">
+    <value>Ingen definerede interfaces på typen '{0}'.</value>
+    <comment>{0} = Navn på type.</comment>
+  </data>
   <data name="NoQueryHandlerRegisteredForTypeAndReturnType" xml:space="preserve">
     <value>Ingen QueryHandler registreret for forespørgelsen af typen '{0}', som returnerer typen '{1}'.</value>
     <comment>{0} = Navn på typen af forespørgelsen, {1} = Navn på typen, der returneres.</comment>
