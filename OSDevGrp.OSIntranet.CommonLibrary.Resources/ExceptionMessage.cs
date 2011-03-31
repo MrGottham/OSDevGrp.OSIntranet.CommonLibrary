@@ -17,5 +17,6 @@
         NoQueryHandlerRegisteredForTypeAndReturnType,
         TransactionError,
         ExceptionNotHandledByCommandHandler,
+        NoInterfacesOnType,
     }
 }
