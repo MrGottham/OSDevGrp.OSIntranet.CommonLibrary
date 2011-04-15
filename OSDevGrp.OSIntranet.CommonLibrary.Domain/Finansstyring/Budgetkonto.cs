@@ -138,20 +138,22 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                     continue;
                 }
                 var fraDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned, 1);
+                if (budgetoplysninger.År == statusDato.Year && budgetoplysninger.Måned == statusDato.Month)
+                {
+                    budgetoplysninger.SætBogførtPrStatusdato(CalculateBogført(fraDato, statusDato, løbenr));
+                    continue;
+                }
                 var tilDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned,
                                            DateTime.DaysInMonth(budgetoplysninger.År, budgetoplysninger.Måned));
-                var bogført = Bogføringslinjer
-                    .Where(
-                        m =>
-                        m.Løbenummer <= løbenr && m.Dato.Date.CompareTo(fraDato) >= 0 &&
-                        m.Dato.Date.CompareTo(tilDato) <= 0)
-                    .Sum(m => m.Debit - m.Kredit);
-                budgetoplysninger.SætBogførtPrStatusdato(bogført);
+                budgetoplysninger.SætBogførtPrStatusdato(CalculateBogført(fraDato, tilDato, løbenr));
             }
             var aktuelBudgetoplysninger =
                 Budgetoplysninger.SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
             BudgetPrStatusdato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.Budget;
-            BogførtPrStatusdato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.BogførtPrStatusdato;
+            BogførtPrStatusdato = aktuelBudgetoplysninger == null
+                                      ? CalculateBogført(new DateTime(statusDato.Year, statusDato.Month, 1), statusDato,
+                                                         løbenr)
+                                      : aktuelBudgetoplysninger.BogførtPrStatusdato;
         }
 
         #endregion
@@ -184,6 +186,22 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             }
             bogføringslinje.SætBudgetkonto(this);
             _bogføringslinjer.Add(bogføringslinje);
+        }
+
+        /// <summary>
+        /// Beregner, hvad der er bogført i en given periode.
+        /// </summary>
+        /// <param name="fraDato">Fra dato.</param>
+        /// <param name="tilDato">Til dato.</param>
+        /// <param name="løbenr">Den unikke identifikation af bogføringslinjen, som indgår i beregningen.</param>
+        /// <returns>Beløbet der er bogført i perioden.</returns>
+        private decimal CalculateBogført(DateTime fraDato, DateTime tilDato, int løbenr)
+        {
+            return Bogføringslinjer
+                .Where(
+                    m =>
+                    m.Løbenummer <= løbenr && m.Dato.Date.CompareTo(fraDato) >= 0 && m.Dato.Date.CompareTo(tilDato) <= 0)
+                .Sum(m => m.Debit - m.Kredit);
         }
 
         #endregion
