@@ -77,7 +77,11 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                return Math.Max(0, Math.Abs(BudgetPrStatusdato) - Math.Abs(BogførtPrStatusdato));
+                if (BudgetPrStatusdato < 0 || BogførtPrStatusdato < 0)
+                {
+                    return Math.Abs(BudgetPrStatusdato) - Math.Abs(BogførtPrStatusdato);
+                }
+                return 0;
             }
         }
 
@@ -131,8 +135,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             foreach (var budgetoplysninger in Budgetoplysninger)
             {
-                if (budgetoplysninger.År > statusDato.Year ||
-                    (budgetoplysninger.År == statusDato.Year && budgetoplysninger.Måned > statusDato.Month))
+                if (budgetoplysninger.År > statusDato.Year || (budgetoplysninger.År == statusDato.Year && budgetoplysninger.Måned > statusDato.Month))
                 {
                     budgetoplysninger.SætBogførtPrStatusdato(0);
                     continue;
@@ -143,17 +146,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                     budgetoplysninger.SætBogførtPrStatusdato(CalculateBogført(fraDato, statusDato, løbenr));
                     continue;
                 }
-                var tilDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned,
-                                           DateTime.DaysInMonth(budgetoplysninger.År, budgetoplysninger.Måned));
+                var tilDato = new DateTime(budgetoplysninger.År, budgetoplysninger.Måned, DateTime.DaysInMonth(budgetoplysninger.År, budgetoplysninger.Måned));
                 budgetoplysninger.SætBogførtPrStatusdato(CalculateBogført(fraDato, tilDato, løbenr));
             }
-            var aktuelBudgetoplysninger =
-                Budgetoplysninger.SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
+            var aktuelBudgetoplysninger = Budgetoplysninger.SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
             BudgetPrStatusdato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.Budget;
-            BogførtPrStatusdato = aktuelBudgetoplysninger == null
-                                      ? CalculateBogført(new DateTime(statusDato.Year, statusDato.Month, 1), statusDato,
-                                                         løbenr)
-                                      : aktuelBudgetoplysninger.BogførtPrStatusdato;
+            BogførtPrStatusdato = aktuelBudgetoplysninger == null ? CalculateBogført(new DateTime(statusDato.Year, statusDato.Month, 1), statusDato, løbenr) : aktuelBudgetoplysninger.BogførtPrStatusdato;
         }
 
         #endregion
