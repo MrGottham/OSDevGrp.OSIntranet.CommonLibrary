@@ -14,10 +14,22 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
         /// <summary>
         /// Henter og returnerer en strengværdi for en given nøgle i applikationskonfigurationer.
         /// </summary>
-        /// <param name="applicationSettings">Applikationskonfigurationer.</param>
+        /// <param name="applicationSettings">Navn på nøgle i applikationskonfigurationer.</param>
         /// <param name="keyName">Navn på nøgle i applikationskonfigurationer.</param>
         /// <returns>Strengværdi.</returns>
         protected virtual string GetStringFromApplicationSettings(NameValueCollection applicationSettings, string keyName)
+        {
+            return GetStringFromApplicationSettings(applicationSettings, keyName, false);
+        }
+
+        /// <summary>
+        /// Henter og returnerer en strengværdi for en given nøgle i applikationskonfigurationer.
+        /// </summary>
+        /// <param name="applicationSettings">Applikationskonfigurationer.</param>
+        /// <param name="keyName">Navn på nøgle i applikationskonfigurationer.</param>
+        /// <param name="allowEmptyValue">Angivelse af, om value må være tom.</param>
+        /// <returns>Strengværdi.</returns>
+        protected virtual string GetStringFromApplicationSettings(NameValueCollection applicationSettings, string keyName, bool allowEmptyValue)
         {
             if (applicationSettings == null)
             {
@@ -28,9 +40,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
                 throw new ArgumentNullException("keyName");
             }
             var value = applicationSettings[keyName];
-            if (string.IsNullOrEmpty(value))
+            if (value == null)
             {
                 var message = Resource.GetExceptionMessage(ExceptionMessage.MissingApplicationSetting, keyName);
+                throw new CommonRepositoryException(message);
+            }
+            if (string.IsNullOrEmpty(value) && !allowEmptyValue)
+            {
+                var message = Resource.GetExceptionMessage(ExceptionMessage.IllegalValueForApplicationSetting, value, keyName);
                 throw new CommonRepositoryException(message);
             }
             return value;
@@ -40,11 +57,11 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
         /// Henter og returnerer en numerisk værdi for en given nøgle i applikationskonfigurationer.
         /// </summary>
         /// <param name="applicationSettings">Applikationskonfigurationer.</param>
-        /// <param name="keyName">Navn på nøgle i applikationskonfigurationer.</param>
+        /// /// <param name="keyName">Navn på nøgle i applikationskonfigurationer.</param>
         /// <returns>Numerisk værdi.</returns>
         protected virtual int GetIntFromApplicationSettings(NameValueCollection applicationSettings, string keyName)
         {
-            var value = GetStringFromApplicationSettings(applicationSettings, keyName);
+            var value = GetStringFromApplicationSettings(applicationSettings, keyName, false);
             try
             {
                 return int.Parse(value);
@@ -65,7 +82,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
         /// <returns>Bolsk værdi.</returns>
         protected virtual bool GetBoolFromApplicationSettings(NameValueCollection applicationSettings, string keyName)
         {
-            var value = GetStringFromApplicationSettings(applicationSettings, keyName);
+            var value = GetStringFromApplicationSettings(applicationSettings, keyName, false);
             try
             {
                 return bool.Parse(value);
@@ -86,10 +103,24 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
         /// <returns>Pathværdi.</returns>
         protected virtual DirectoryInfo GetPathFromApplicationSettings(NameValueCollection applicationSettings, string keyName)
         {
-            var directoryInfo = new DirectoryInfo(GetStringFromApplicationSettings(applicationSettings, keyName));
+            return GetPathFromApplicationSettings(applicationSettings, keyName, false);
+        }
+
+        /// <summary>
+        /// Henter og returnerer en pathværdi for en given nøgle i applikationskonfigurationer.
+        /// </summary>
+        /// <param name="applicationSettings">Applikationskonfigurationer.</param>
+        /// <param name="keyName">Navn på nøgle i applikationskonfigurationer.</param>
+        /// <param name="allowEmptyValue">Angivelse af, om value må være tom.</param>
+        /// <returns>Pathværdi.</returns>
+        protected virtual DirectoryInfo GetPathFromApplicationSettings(NameValueCollection applicationSettings, string keyName, bool allowEmptyValue)
+        {
+            var value = GetStringFromApplicationSettings(applicationSettings, keyName, allowEmptyValue);
+            var directoryInfo = new DirectoryInfo(Environment.ExpandEnvironmentVariables(value));
             if (!directoryInfo.Exists)
             {
-                var message = Resource.GetExceptionMessage(ExceptionMessage.IllegalValueForApplicationSetting, directoryInfo.FullName, keyName);
+                var message = Resource.GetExceptionMessage(ExceptionMessage.PathInApplicationSettingsDontExists,
+                                                           directoryInfo.FullName, keyName);
                 throw new CommonRepositoryException(message);
             }
             return directoryInfo;
