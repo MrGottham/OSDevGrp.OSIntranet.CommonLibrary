@@ -133,9 +133,17 @@
     <value>Exception blev ikke korrekt behandlet af CommandHandleren, der er registreret for kommandoen af typen '{0}', som returnerer typen '{1}'.</value>
     <comment>{0} = Navn på typen af kommandoen, {1} = Navn på typen, der returneres.</comment>
   </data>
+  <data name="IllegalValueForApplicationSetting" xml:space="preserve">
+    <value>Værdien '{0}' er ulovlig for nøglen '{1}' i applikationskonfigurationsfilen.</value>
+    <comment>{0} = Ulovlig værdi, {1} = Navn på nølge. </comment>
+  </data>
   <data name="InvalidType" xml:space="preserve">
     <value>Typen '{0}' er ikke valid.</value>
     <comment>{0} = Navn på type.</comment>
+  </data>
+  <data name="MissingApplicationSetting" xml:space="preserve">
+    <value>Nøglen '{0}' mangler i applikationskonfigurationsfilen.</value>
+    <comment>{0} = Navn på nølge.</comment>
   </data>
   <data name="NoCommandHandlerRegisteredForType" xml:space="preserve">
     <value>Ingen CommandHandlers registreret for kommandoen af typen '{0}'.</value>
@@ -156,6 +164,10 @@
   <data name="NoQueryHandlerRegisteredForTypeAndReturnType" xml:space="preserve">
     <value>Ingen QueryHandler registreret for forespørgelsen af typen '{0}', som returnerer typen '{1}'.</value>
     <comment>{0} = Navn på typen af forespørgelsen, {1} = Navn på typen, der returneres.</comment>
+  </data>
+  <data name="PathInApplicationSettingsDontExists" xml:space="preserve">
+    <value>Path'en '{0}' for nøglen '{1}'  i applikationskonfigurationsfilen eksisterer ikke.</value>
+    <comment>{0} = Navn på path, {1} = Navn på nølge.</comment>
   </data>
   <data name="TransactionError" xml:space="preserve">
     <value>Transaktion fejlede med fejlen: {0}</value>

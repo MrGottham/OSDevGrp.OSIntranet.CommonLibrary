@@ -53,11 +53,15 @@
     <Reference Include="nunit.framework">
       <HintPath>..\External references\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\External references\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.Mocks">
       <HintPath>..\External references\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\CommandBusTests.cs" />
@@ -78,6 +82,8 @@
     <Compile Include="IoC\TestObjects\ISomeOtherComponent.cs" />
     <Compile Include="IoC\TestObjects\SomeOtherComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CommonRepositoryExceptionTests.cs" />
+    <Compile Include="Repositories\KonfigurationRepositoryBaseTests.cs" />
     <Compile Include="Resources\ResourceTests.cs" />
     <Compile Include="Wcf\ConfigurationTests.cs" />
   </ItemGroup>
@@ -101,6 +107,14 @@
     <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.IoC\OSDevGrp.OSIntranet.CommonLibrary.IoC.csproj">
       <Project>{C973087B-BA1F-461B-BE7A-DB4FC03306FE}</Project>
       <Name>OSDevGrp.OSIntranet.CommonLibrary.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface\OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface.csproj">
+      <Project>{5246F0B7-6ACF-469D-A1E6-5AD9B194B82C}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Repositories\OSDevGrp.OSIntranet.CommonLibrary.Repositories.csproj">
+      <Project>{04B7D2CC-5C24-40EE-B8A1-36B511BAA1A8}</Project>
+      <Name>OSDevGrp.OSIntranet.CommonLibrary.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj">
       <Project>{2EBCC49B-142C-4DA2-A021-ADA925975A3A}</Project>

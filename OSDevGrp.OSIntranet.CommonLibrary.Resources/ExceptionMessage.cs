@@ -18,5 +18,8 @@
         TransactionError,
         ExceptionNotHandledByCommandHandler,
         NoInterfacesOnType,
+        MissingApplicationSetting,
+        IllegalValueForApplicationSetting,
+        PathInApplicationSettingsDontExists
     }
 }
