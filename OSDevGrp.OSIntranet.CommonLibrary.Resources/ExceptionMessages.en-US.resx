@@ -133,9 +133,17 @@
     <value>Exception was not handled correctly in the CommandHandler registered for command with the type '{0}' that return type of '{1}'.</value>
     <comment>{0} = Name for the type of the command, {1} = Name for the type to return.</comment>
   </data>
+  <data name="IllegalValueForApplicationSetting" xml:space="preserve">
+    <value>The value '{0}' is illegal for the key named '{1}' in the application config file.</value>
+    <comment>{0} = Illegal value, {1} = Name of key. </comment>
+  </data>
   <data name="InvalidType" xml:space="preserve">
     <value>Type '{0}' not valid.</value>
     <comment>{0} = Name of type.</comment>
+  </data>
+  <data name="MissingApplicationSetting" xml:space="preserve">
+    <value>The key named '{0}' is missing in the application config file.</value>
+    <comment>{0} = Name of key.</comment>
   </data>
   <data name="NoCommandHandlerRegisteredForType" xml:space="preserve">
     <value>No CommandHandlers registered for command with the type '{0}'.</value>
@@ -156,6 +164,10 @@
   <data name="NoQueryHandlerRegisteredForTypeAndReturnType" xml:space="preserve">
     <value>No QueryHandler registered for query with the type '{0}' that return type of '{1}'.</value>
     <comment>{0} = Name for the type of the query, {1} = Name for the type to return.</comment>
+  </data>
+  <data name="PathInApplicationSettingsDontExists" xml:space="preserve">
+    <value>The path '{0}' for the key named '{1}' in the application config file does not exists.</value>
+    <comment>{0} = Path, {1} = Name of key.</comment>
   </data>
   <data name="TransactionError" xml:space="preserve">
     <value>Transaction error: {0}</value>
