@@ -7,6 +7,13 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public abstract class KontogruppeBase
     {
+        #region Private variables
+
+        private readonly int _nummer;
+        private string _navn;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -20,10 +27,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             {
                 throw new ArgumentNullException("navn");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Nummer = nummer;
-            Navn = navn;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _nummer = nummer;
+            _navn = navn;
         }
 
         #endregion
@@ -35,8 +40,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual int Nummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _nummer;
+            }
         }
 
         /// <summary>
@@ -44,8 +51,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual string Navn
         {
-            get;
-            protected set;
+            get
+            {
+                return _navn;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _navn = value;
+            }
         }
 
         #endregion
@@ -59,6 +76,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         public override string ToString()
         {
             return Navn;
+        }
+
+        /// <summary>
+        /// Opdaterer navnet på kontogruppen.
+        /// </summary>
+        /// <param name="navn">Navn på kontogruppen.</param>
+        public virtual void SætNavn(string navn)
+        {
+            Navn = navn;
         }
 
         #endregion

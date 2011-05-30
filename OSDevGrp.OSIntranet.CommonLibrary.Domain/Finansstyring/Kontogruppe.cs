@@ -7,6 +7,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public class Kontogruppe : KontogruppeBase
     {
+        #region Private variables
+
+        private KontogruppeType _kontogruppeType;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -18,9 +24,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         public Kontogruppe(int nummer, string navn, KontogruppeType kontogruppeType)
             : base(nummer, navn)
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            KontogruppeType = kontogruppeType;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _kontogruppeType = kontogruppeType;
         }
 
         #endregion
@@ -32,8 +36,27 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual KontogruppeType KontogruppeType
         {
-            get;
-            protected set;
+            get
+            {
+                return _kontogruppeType;
+            }
+            protected set
+            {
+                _kontogruppeType = value;
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Opdaterer typen for kontogruppen.
+        /// </summary>
+        /// <param name="kontogruppeType">Type for kontogruppen.</param>
+        public virtual void SætKontogruppeType(KontogruppeType kontogruppeType)
+        {
+            KontogruppeType = kontogruppeType;
         }
 
         #endregion
