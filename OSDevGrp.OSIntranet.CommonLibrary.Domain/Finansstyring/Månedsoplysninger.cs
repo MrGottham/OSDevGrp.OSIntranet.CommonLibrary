@@ -8,6 +8,13 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public abstract class Månedsoplysninger
     {
+        #region Private variables
+
+        private readonly int _år;
+        private readonly int _måned;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -17,10 +24,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="måned">Måned.</param>
         protected Månedsoplysninger(int år, int måned)
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            År = år;
-            Måned = måned;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _år = år;
+            _måned = måned;
         }
 
         #endregion
@@ -32,8 +37,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual int År
         {
-            get;
-            protected set;
+            get
+            {
+                return _år;
+            }
         }
 
         /// <summary>
@@ -41,8 +48,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual int Måned
         {
-            get;
-            protected  set;
+            get
+            {
+                return _måned;
+            }
         }
 
         #endregion
