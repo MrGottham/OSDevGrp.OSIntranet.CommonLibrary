@@ -7,6 +7,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
     /// </summary>
     public class Adressegruppe
     {
+        #region Private variables
+
+        private readonly int _nummer;
+        private string _navn;
+        private int _adressegruppeOswebdb;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -21,11 +29,9 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
             {
                 throw new ArgumentNullException("navn");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Nummer = nummer;
-            Navn = navn;
-            AdressegruppeOswebdb = adressegruppeOswebdb;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _nummer = nummer;
+            _navn = navn;
+            _adressegruppeOswebdb = adressegruppeOswebdb;
         }
 
         #endregion
@@ -37,8 +43,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual int Nummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _nummer;
+            }
         }
 
         /// <summary>
@@ -46,8 +54,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual string Navn
         {
-            get;
-            protected set;
+            get
+            {
+                return _navn;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _navn = value;
+            }
         }
 
         /// <summary>
@@ -55,8 +73,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual int AdressegruppeOswebdb
         {
-            get;
-            protected set;
+            get
+            {
+                return _adressegruppeOswebdb;
+            }
+            protected set
+            {
+                _adressegruppeOswebdb = value;
+            }
         }
 
         #endregion
@@ -70,6 +94,24 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         public override string ToString()
         {
             return Navn;
+        }
+
+        /// <summary>
+        /// Opdaterer navnet på adressegruppen.
+        /// </summary>
+        /// <param name="navn">Navn på adressegruppen.</param>
+        public virtual void SætNavn(string navn)
+        {
+            Navn = navn;
+        }
+
+        /// <summary>
+        /// Opdaterer nummeret på den tilsvarende adressegruppe i OSWEBDB.
+        /// </summary>
+        /// <param name="adressegruppeOswebdb">Nummer på den tilsvarende adressegruppe i OSWEBDB.</param>
+        public virtual void SætAdressegruppeOswebdb(int adressegruppeOswebdb)
+        {
+            AdressegruppeOswebdb = adressegruppeOswebdb;
         }
 
         #endregion

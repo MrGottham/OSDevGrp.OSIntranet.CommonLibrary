@@ -7,18 +7,28 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
     /// </summary>
     public class Betalingsbetingelse
     {
+        #region Private variables
+
+        private readonly int _nummer;
+        private string _navn;
+
+        #endregion
+
         #region Constructor
 
+        /// <summary>
+        /// Danner en betalingsbetingelse.
+        /// </summary>
+        /// <param name="nummer">Nummer på betalingsbetingelsen</param>
+        /// <param name="navn">Navn på betalingsbetingelsen.</param>
         public Betalingsbetingelse(int nummer, string navn)
         {
             if (string.IsNullOrEmpty(navn))
             {
                 throw new ArgumentNullException("navn");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Nummer = nummer;
-            Navn = navn;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _nummer = nummer;
+            _navn = navn;
         }
 
         #endregion 
@@ -30,8 +40,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual int Nummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _nummer;
+            }
         }
 
         /// <summary>
@@ -39,8 +51,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual string Navn
         {
-            get;
-            protected set;
+            get
+            {
+                return _navn;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _navn = value;
+            }
         }
 
         #endregion
@@ -55,6 +77,16 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         {
             return Navn;
         }
+
+        /// <summary>
+        /// Opdaterer navnet på betalingsbetingelsen.
+        /// </summary>
+        /// <param name="navn">Navn på betalingsbetingelsen.</param>
+        public virtual void SætNavn(string navn)
+        {
+            Navn = navn;
+        }
+
 
         #endregion
     }
