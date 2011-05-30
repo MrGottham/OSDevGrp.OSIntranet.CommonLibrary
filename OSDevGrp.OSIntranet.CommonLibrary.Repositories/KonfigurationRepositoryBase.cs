@@ -45,7 +45,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
                 var message = Resource.GetExceptionMessage(ExceptionMessage.MissingApplicationSetting, keyName);
                 throw new CommonRepositoryException(message);
             }
-            if (string.IsNullOrEmpty(value) && !allowEmptyValue)
+            if (value.CompareTo(string.Empty) == 0 && !allowEmptyValue)
             {
                 var message = Resource.GetExceptionMessage(ExceptionMessage.IllegalValueForApplicationSetting, value, keyName);
                 throw new CommonRepositoryException(message);
@@ -116,6 +116,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Repositories
         protected virtual DirectoryInfo GetPathFromApplicationSettings(NameValueCollection applicationSettings, string keyName, bool allowEmptyValue)
         {
             var value = GetStringFromApplicationSettings(applicationSettings, keyName, allowEmptyValue);
+            if (value.CompareTo(string.Empty) == 0 && allowEmptyValue)
+            {
+                return null;
+            }
             var directoryInfo = new DirectoryInfo(Environment.ExpandEnvironmentVariables(value));
             if (!directoryInfo.Exists)
             {

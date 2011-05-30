@@ -305,6 +305,61 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         }
 
         /// <summary>
+        /// Tester, at GetPathFromApplicationSettings henter værdi med environment variabel for nøgle i applikationskonfigurationer.
+        /// </summary>
+        [Test]
+        public void TestAtGetPathFromApplicationSettingsHenterVærdiMedEnvironmentVariabelForKeyName()
+        {
+            var fixture = new Fixture();
+            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+
+            var method = repository.GetType().GetMethod("GetPathFromApplicationSettings",
+                                                        BindingFlags.Instance | BindingFlags.NonPublic, null,
+                                                        CallingConventions.Any,
+                                                        new[] {typeof (NameValueCollection), typeof (string)}, null);
+            Assert.That(method, Is.Not.Null);
+
+            var keyName = fixture.CreateAnonymous<string>();
+            var applicationSettings = new NameValueCollection
+                                          {
+                                              {keyName, "%WinDir%"}
+                                          };
+            var returnValued = method.Invoke(repository, new object[] {applicationSettings, keyName});
+            Assert.That(returnValued, Is.Not.Null);
+            Assert.That(returnValued, Is.TypeOf(typeof (DirectoryInfo)));
+            Assert.That(((DirectoryInfo) returnValued).Exists, Is.True);
+        }
+
+        /// <summary>
+        /// Tester, at GetPathFromApplicationSettings returnerer null, hvis værdi for nøglen er tom.
+        /// </summary>
+        [Test]
+        public void TestAtGetPathFromApplicationSettingsReturnererNullHvisValueErEmpty()
+        {
+            var fixture = new Fixture();
+            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+
+            var method = repository.GetType().GetMethod("GetPathFromApplicationSettings",
+                                                        BindingFlags.Instance | BindingFlags.NonPublic, null,
+                                                        CallingConventions.Any,
+                                                        new[]
+                                                            {
+                                                                typeof (NameValueCollection), typeof (string),
+                                                                typeof (bool)
+                                                            }, null);
+            Assert.That(method, Is.Not.Null);
+
+            var keyName = fixture.CreateAnonymous<string>();
+            var value = string.Empty;
+            var applicationSettings = new NameValueCollection
+                                          {
+                                              {keyName, value}
+                                          };
+            var returnValued = method.Invoke(repository, new object[] { applicationSettings, keyName, true });
+            Assert.That(returnValued, Is.Null);
+        }
+
+        /// <summary>
         /// Tester, at GetPathFromApplicationSettings kaster en CommonRepositoryException, hvis path ikke eksisterer.
         /// </summary>
         [Test]
