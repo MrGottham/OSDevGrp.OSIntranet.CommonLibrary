@@ -7,6 +7,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public class Kreditoplysninger : Månedsoplysninger
     {
+        #region Private variables
+
+        private decimal _kredit;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -17,9 +23,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <param name="kredit">Kredit.</param>
         public Kreditoplysninger(int år, int måned, decimal kredit) : base(år, måned)
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Kredit = kredit;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _kredit = kredit;
         }
 
         #endregion
@@ -40,8 +44,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual decimal Kredit
         {
-            get;
-            protected set;
+            get
+            {
+                return _kredit;
+            }
+            protected set
+            {
+                _kredit = value;
+            }
         }
 
         #endregion
@@ -59,6 +69,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 throw new ArgumentNullException("konto");
             }
             Konto = konto;
+        }
+
+        /// <summary>
+        /// Opdaterer kredit.
+        /// </summary>
+        /// <param name="kredit">Kredit.</param>
+        public virtual void SætKredit(decimal kredit)
+        {
+            Kredit = kredit;
         }
 
         #endregion 

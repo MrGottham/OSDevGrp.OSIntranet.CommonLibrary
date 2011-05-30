@@ -7,6 +7,13 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public class Budgetoplysninger : Månedsoplysninger
     {
+        #region Private variables
+
+        private decimal _indtægter;
+        private decimal _udgifter;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -19,10 +26,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         public Budgetoplysninger(int år, int måned, decimal indtægter, decimal udgifter)
             : base(år, måned)
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Indtægter = indtægter;
-            Udgifter = udgifter;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _indtægter = indtægter;
+            _udgifter = udgifter;
         }
 
         #endregion
@@ -43,8 +48,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual decimal Indtægter
         {
-            get;
-            protected set;
+            get
+            {
+                return _indtægter;
+            }
+            protected set
+            {
+                _indtægter = value;
+            }
         }
 
         /// <summary>
@@ -52,8 +63,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual decimal Udgifter
         {
-            get;
-            protected set;
+            get
+            {
+                return _udgifter;
+            }
+            protected set
+            {
+                _udgifter = value;
+            }
         }
 
         /// <summary>
@@ -111,6 +128,24 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         internal virtual void SætBogførtPrStatusdato(decimal bogførtPrStatusdato)
         {
             BogførtPrStatusdato = bogførtPrStatusdato;
+        } 
+
+        /// <summary>
+        /// Opdaterer indtægter.
+        /// </summary>
+        /// <param name="indtægter">Indtægter.</param>
+        public virtual void SætIndtægter(decimal indtægter)
+        {
+            Indtægter = indtægter;
+        }
+
+        /// <summary>
+        /// Opdaterer udgifter.
+        /// </summary>
+        /// <param name="udgifter">Udgifter.</param>
+        public virtual void SætUdgifter(decimal udgifter)
+        {
+            Udgifter = udgifter;
         }
 
         #endregion

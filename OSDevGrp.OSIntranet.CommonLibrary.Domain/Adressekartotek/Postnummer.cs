@@ -7,6 +7,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
     /// </summary>
     public class Postnummer
     {
+        #region Private variables
+
+        private readonly string _landekode;
+        private readonly string _postnr;
+        private string _by;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -29,11 +37,9 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
             {
                 throw new ArgumentNullException("by");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Landekode = landekode;
-            Postnr = postnr;
-            By = by;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _landekode = landekode;
+            _postnr = postnr;
+            _by = by;
         }
 
         #endregion
@@ -45,8 +51,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual string Landekode
         {
-            get;
-            protected set;
+            get
+            {
+                return _landekode;
+            }
         }
 
         /// <summary>
@@ -54,8 +62,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual string Postnr
         {
-            get;
-            protected set;
+            get
+            {
+                return _postnr;
+            }
         }
 
         /// <summary>
@@ -63,8 +73,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual string By
         {
-            get;
-            protected set;
+            get
+            {
+                return _by;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _by = value;
+            }
         }
 
         #endregion
@@ -86,6 +106,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
                 return string.Format("{0}  {1}", Postnr, By);
             }
             return string.IsNullOrEmpty(By) ? string.Empty : By;
+        }
+
+        /// <summary>
+        /// Opdaterer bynavn.
+        /// </summary>
+        /// <param name="by">Bynavn.</param>
+        public virtual void SætBy(string by)
+        {
+            By = by;
         }
 
         #endregion
