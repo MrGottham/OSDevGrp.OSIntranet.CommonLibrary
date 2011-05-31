@@ -10,6 +10,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     {
         #region Private variables
 
+        private readonly int _løbenummer;
+        private readonly DateTime _dato;
+        private readonly string _bilag;
+        private readonly string _tekst;
+        private readonly decimal _debit;
+        private readonly decimal _kredit;
         private Konto _konto;
         private Budgetkonto _budgetkonto;
         private AdresseBase _adresse;
@@ -33,14 +39,12 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             {
                 throw new ArgumentNullException("tekst");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Løbenummer = løbenummer;
-            Dato = dato;
-            Bilag = bilag;
-            Tekst = tekst;
-            Debit = debit;
-            Kredit = kredit;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _løbenummer = løbenummer;
+            _dato = dato;
+            _bilag = bilag;
+            _tekst = tekst;
+            _debit = debit;
+            _kredit = kredit;
         }
 
         #endregion
@@ -52,8 +56,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual int Løbenummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _løbenummer;
+            }
         }
 
         /// <summary>
@@ -61,8 +67,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual DateTime Dato
         {
-            get;
-            protected set;
+            get
+            {
+                return _dato;
+            }
         }
 
         /// <summary>
@@ -70,8 +78,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual string Bilag
         {
-            get;
-            protected set;
+            get
+            {
+                return _bilag;
+            }
         }
 
         /// <summary>
@@ -98,8 +108,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual string Tekst
         {
-            get;
-            protected set;
+            get
+            {
+                return _tekst;
+            }
         }
 
         /// <summary>
@@ -126,8 +138,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual decimal Debit
         {
-            get;
-            protected set;
+            get
+            {
+                return _debit;
+            }
         }
 
         /// <summary>
@@ -135,8 +149,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual decimal Kredit
         {
-            get;
-            protected set;
+            get
+            {
+                return _kredit;
+            }
         }
 
         /// <summary>

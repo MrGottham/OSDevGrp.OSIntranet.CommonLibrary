@@ -7,6 +7,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     /// </summary>
     public abstract class KontoBase
     {
+        #region Private variables
+
+        private readonly Regnskab _regnskab;
+        private readonly string _kontonummer;
+        private string _kontonavn;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -29,11 +37,9 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             {
                 throw new ArgumentNullException("kontonavn");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Regnskab = regnskab;
-            Kontonummer = kontonummer;
-            Kontonavn = kontonavn;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _regnskab = regnskab;
+            _kontonummer = kontonummer;
+            _kontonavn = kontonavn;
         }
 
         #endregion
@@ -45,8 +51,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual Regnskab Regnskab
         {
-            get;
-            protected set;
+            get
+            {
+                return _regnskab;
+            }
         }
 
         /// <summary>
@@ -54,8 +62,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual string Kontonummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _kontonummer;
+            }
         }
 
         /// <summary>
@@ -63,8 +73,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual string Kontonavn
         {
-            get;
-            protected set;
+            get
+            {
+                return _kontonavn;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _kontonavn = value;
+            }
         }
 
         /// <summary>
@@ -100,6 +120,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 return string.Format("{0} {1}", Kontonummer, Kontonavn);
             }
             return string.IsNullOrEmpty(Kontonavn) ? string.Empty : Kontonavn;
+        }
+
+        /// <summary>
+        /// Opdaterer kontonavn.
+        /// </summary>
+        /// <param name="kontonavn">Kontonavn.</param>
+        public virtual void SætKontonavn(string kontonavn)
+        {
+            Kontonavn = kontonavn;
         }
 
         /// <summary>

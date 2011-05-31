@@ -15,6 +15,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 
         private readonly IList<Budgetoplysninger> _budgetoplysninger = new List<Budgetoplysninger>();
         private readonly IList<Bogføringslinje> _bogføringslinjer = new List<Bogføringslinje>();
+        private Budgetkontogruppe _budgetkontogruppe;
 
         #endregion
 
@@ -34,9 +35,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             {
                 throw new ArgumentException("budgetkontogruppe");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Budgetkontogruppe = budgetkontogruppe;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _budgetkontogruppe = budgetkontogruppe;
         }
 
         #endregion
@@ -48,8 +47,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual Budgetkontogruppe Budgetkontogruppe
         {
-            get;
-            protected set;
+            get
+            {
+                return _budgetkontogruppe;
+            }
+            protected set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _budgetkontogruppe = value;
+            }
         }
 
         /// <summary>
@@ -88,7 +97,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Budgetoplysninger.
         /// </summary>
-        public virtual IList<Budgetoplysninger> Budgetoplysninger
+        public virtual IEnumerable<Budgetoplysninger> Budgetoplysninger
         {
             get
             {
@@ -102,7 +111,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Bogføringslinjer.
         /// </summary>
-        public virtual IList<Bogføringslinje> Bogføringslinjer
+        public virtual IEnumerable<Bogføringslinje> Bogføringslinjer
         {
             get
             {
@@ -157,6 +166,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         #endregion
 
         #region Methods
+        
+        /// <summary>
+        /// Opdaterer budgetkontogruppe.
+        /// </summary>
+        /// <param name="budgetkontogruppe">Budgetkontogruppe.</param>
+        public virtual void SætBudgetkontogruppe(Budgetkontogruppe budgetkontogruppe)
+        {
+            Budgetkontogruppe = budgetkontogruppe;
+        }
 
         /// <summary>
         /// Tilføjer budgetoplysinger.

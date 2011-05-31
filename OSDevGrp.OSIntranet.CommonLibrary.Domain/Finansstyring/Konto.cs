@@ -15,6 +15,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 
         private readonly IList<Kreditoplysninger> _kreditoplysninger = new List<Kreditoplysninger>();
         private readonly IList<Bogføringslinje> _bogføringslinjer = new List<Bogføringslinje>();
+        private Kontogruppe _kontogruppe;
 
         #endregion
 
@@ -34,9 +35,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             {
                 throw new ArgumentNullException("kontogruppe");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Kontogruppe = kontogruppe;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _kontogruppe = kontogruppe;
         }
 
         #endregion
@@ -48,8 +47,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual Kontogruppe Kontogruppe
         {
-            get;
-            protected set;
+            get
+            {
+                return _kontogruppe;
+            }
+            protected set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _kontogruppe = value;
+            }
         }
 
         /// <summary>
@@ -84,7 +93,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Kreditoplysninger.
         /// </summary>
-        public virtual IList<Kreditoplysninger> Kreditoplysninger
+        public virtual IEnumerable<Kreditoplysninger> Kreditoplysninger
         {
             get
             {
@@ -98,7 +107,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Bogføringslinjer.
         /// </summary>
-        public virtual IList<Bogføringslinje> Bogføringslinjer
+        public virtual IEnumerable<Bogføringslinje> Bogføringslinjer
         {
             get
             {
@@ -142,6 +151,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Opdaterer kontogruppe.
+        /// </summary>
+        /// <param name="kontogruppe">Kontogruppe.</param>
+        public virtual void SætKontogruppe(Kontogruppe kontogruppe)
+        {
+            Kontogruppe = kontogruppe;
+        }
 
         /// <summary>
         /// Tilføjer kreditoplysinger.
