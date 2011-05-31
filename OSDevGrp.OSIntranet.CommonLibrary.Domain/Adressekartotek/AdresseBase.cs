@@ -14,7 +14,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
     {
         #region Private variables
 
+        private readonly int _nummer;
         private readonly IList<Bogføringslinje> _bogføringslinjer = new List<Bogføringslinje>();
+        private string _navn;
+        private Adressegruppe _adressegruppe;
 
         #endregion
 
@@ -26,9 +29,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// <param name="nummer">Unik identifikation af adressen.</param>
         protected AdresseBase(int nummer)
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Nummer = nummer;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _nummer = nummer;
         }
 
         /// <summary>
@@ -47,11 +48,9 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
             {
                 throw new ArgumentNullException("adressegruppe");
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Nummer = nummer;
-            Navn = navn;
-            Adressegruppe = adressegruppe;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _nummer = nummer;
+            _navn = navn;
+            _adressegruppe = adressegruppe;
         }
 
         #endregion
@@ -63,8 +62,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual int Nummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _nummer;
+            }
         }
 
         /// <summary>
@@ -72,8 +73,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual string Navn
         {
-            get;
-            protected set;
+            get
+            {
+                return _navn;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _navn = value;
+            }
         }
 
         /// <summary>
@@ -135,8 +146,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// </summary>
         public virtual Adressegruppe Adressegruppe
         {
-            get;
-            protected set;
+            get
+            {
+                return _adressegruppe;
+            }
+            protected set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _adressegruppe = value;
+            }
         }
 
         /// <summary>
@@ -205,7 +226,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// <summary>
         /// Bogføringslinjer.
         /// </summary>
-        public virtual IList<Bogføringslinje> Bogføringslinjer
+        public virtual IEnumerable<Bogføringslinje> Bogføringslinjer
         {
             get
             {
@@ -255,6 +276,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         }
 
         /// <summary>
+        /// Opdaterer navn.
+        /// </summary>
+        /// <param name="navn">Navn.</param>
+        public virtual void SætNavn(string navn)
+        {
+            Navn = Navn;
+        }
+
+        /// <summary>
         /// Sætter adresseoplysninger.
         /// </summary>
         /// <param name="adresse1">Adresse (linje 1).</param>
@@ -278,6 +308,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
             Telefon1 = telefon1;
             Telefon2 = telefon2;
             Telefon3 = telefon3;
+        }
+
+        /// <summary>
+        /// Opdaterer adressegruppe.
+        /// </summary>
+        /// <param name="adressegruppe">Adressegruppe.</param>
+        public virtual void SætAdressegruppe(Adressegruppe adressegruppe)
+        {
+            Adressegruppe = adressegruppe;
         }
 
         /// <summary>

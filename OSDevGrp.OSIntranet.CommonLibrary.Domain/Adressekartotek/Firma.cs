@@ -70,7 +70,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// <summary>
         /// Personer, som er tilknyttet firmaet.
         /// </summary>
-        public virtual IList<Person> Personer
+        public virtual IEnumerable<Person> Personer
         {
             get
             {
