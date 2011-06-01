@@ -136,7 +136,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         /// <param name="statusDato">Statusdato.</param>
         /// <param name="løbenr">Den unikke identifikation af bogføringslinjen, som indgår i beregningen.</param>
-        public void Calculate(DateTime statusDato, int løbenr)
+        public virtual void Calculate(DateTime statusDato, int løbenr)
         {
             // Beregn kredit pr. statusdato.
             var kreditoplysninger = Kreditoplysninger

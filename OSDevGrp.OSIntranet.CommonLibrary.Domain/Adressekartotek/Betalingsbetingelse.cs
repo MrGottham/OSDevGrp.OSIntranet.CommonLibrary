@@ -87,7 +87,6 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
             Navn = navn;
         }
 
-
         #endregion
     }
 }

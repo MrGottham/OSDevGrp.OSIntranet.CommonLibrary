@@ -59,6 +59,7 @@
     <Compile Include="Comparers\RegnskabComparer.cs" />
     <Compile Include="Enums\Kontogruppetype.cs" />
     <Compile Include="Finansstyring\ICalculatable.cs" />
+    <Compile Include="Fælles\Brevhoved.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Finansstyring\Bogføringslinje.cs" />
     <Compile Include="Finansstyring\Budgetkonto.cs" />

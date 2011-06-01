@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using OSDevGrp.OSIntranet.CommonLibrary.Domain.Comparers;
+using OSDevGrp.OSIntranet.CommonLibrary.Domain.Fælles;
 
 namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
 {
@@ -13,7 +14,9 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
     {
         #region Private variables
 
+        private readonly int _nummer;
         private readonly IList<KontoBase> _konti = new List<KontoBase>();
+        private string _navn;
 
         #endregion
 
@@ -30,10 +33,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             {
                 throw new ArgumentException(navn);
             }
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
-            Nummer = nummer;
-            Navn = navn;
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
+            _nummer = nummer;
+            _navn = navn;
         }
 
         #endregion
@@ -45,14 +46,35 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         public virtual int Nummer
         {
-            get;
-            protected set;
+            get
+            {
+                return _nummer;
+            }
         }
 
         /// <summary>
         /// Navn på regnskab.
         /// </summary>
         public virtual string Navn
+        {
+            get
+            {
+                return _navn;
+            }
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+                _navn = value;
+            }
+        }
+
+        /// <summary>
+        /// Brevhoved til regnskabet.
+        /// </summary>
+        public virtual Brevhoved Brevhoved
         {
             get;
             protected set;
@@ -61,7 +83,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// <summary>
         /// Konti på regnskabet.
         /// </summary>
-        public virtual IList<KontoBase> Konti
+        public virtual IEnumerable<KontoBase> Konti
         {
             get
             {
@@ -84,10 +106,28 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         }
 
         /// <summary>
+        /// Opdaterer navn på regnskabet.
+        /// </summary>
+        /// <param name="navn">Navn på regnskabet.</param>
+        public virtual void SætNavn(string navn)
+        {
+            Navn = navn;
+        }
+
+        /// <summary>
+        /// Sætter brevhovedet til regnskabet.
+        /// </summary>
+        /// <param name="brevhoved">Brevhoved til regnskabet.</param>
+        public virtual void SætBrevhoved(Brevhoved brevhoved)
+        {
+            Brevhoved = brevhoved;
+        }
+
+        /// <summary>
         /// Tilføjer en konto til regnskabet.
         /// </summary>
         /// <param name="konto">Konto.</param>
-        public void TilføjKonto(KontoBase konto)
+        public virtual void TilføjKonto(KontoBase konto)
         {
             if (konto == null)
             {
