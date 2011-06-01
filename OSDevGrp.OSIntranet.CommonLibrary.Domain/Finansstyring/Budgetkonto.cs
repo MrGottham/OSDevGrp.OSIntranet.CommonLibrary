@@ -130,7 +130,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// Kalkulering af status på et givent tidspunkt.
         /// </summary>
         /// <param name="statusDato">Statusdato.</param>
-        public void Calculate(DateTime statusDato)
+        public virtual void Calculate(DateTime statusDato)
         {
             Calculate(statusDato, int.MaxValue);
         }
@@ -140,7 +140,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         /// </summary>
         /// <param name="statusDato">Statusdato.</param>
         /// <param name="løbenr">Den unikke identifikation af bogføringslinjen, som indgår i beregningen.</param>
-        public void Calculate(DateTime statusDato, int løbenr)
+        public virtual void Calculate(DateTime statusDato, int løbenr)
         {
             foreach (var budgetoplysninger in Budgetoplysninger)
             {
