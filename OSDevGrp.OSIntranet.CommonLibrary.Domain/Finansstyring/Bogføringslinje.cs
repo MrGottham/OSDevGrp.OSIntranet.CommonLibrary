@@ -19,6 +19,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         private Konto _konto;
         private Budgetkonto _budgetkonto;
         private AdresseBase _adresse;
+        private static bool _autoCalculate = true;
 
         #endregion
 
@@ -91,7 +92,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                if (_konto != null)
+                if (_konto != null && AutoCalculate)
                 {
                     _konto.Calculate(Dato, Løbenummer);
                 }
@@ -121,7 +122,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                if (_budgetkonto != null)
+                if (_budgetkonto != null && AutoCalculate)
                 {
                     _budgetkonto.Calculate(Dato, Løbenummer);
                 }
@@ -162,7 +163,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             get
             {
-                if (_adresse != null)
+                if (_adresse != null && AutoCalculate)
                 {
                     _adresse.Calculate(Dato, Løbenummer);
                 }
@@ -171,6 +172,22 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             protected set
             {
                 _adresse = value;
+            }
+        }
+
+        /// <summary>
+        /// Angivelse af, om kontoen, budgetkontoen og adressen kalkuleres i forhold til bogføringslinjer,
+        /// hvilket kan tage ekstra tid.
+        /// </summary>
+        public static bool AutoCalculate
+        {
+            get
+            {
+                return _autoCalculate;
+            }
+            protected set
+            {
+                _autoCalculate = value;
             }
         }
 
@@ -226,6 +243,16 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 throw new ArgumentNullException("adresse");
             }
             Adresse = adresse;
+        }
+
+        /// <summary>
+        /// Sætter angivelse af, om kontoen, budgetkontoen og adressen kalkuleres i forhold til bogføringslinjer,
+        /// hvilket kan tage ekstra tid.
+        /// </summary>
+        /// <param name="autoCalculate">Ángivelse af, om kontoen, budgetkontoen og adressen kalkuleres i forhold til bogføringslinjer.</param>
+        public static void SætAutoCalculate(bool autoCalculate)
+        {
+            AutoCalculate = autoCalculate;
         }
 
         #endregion

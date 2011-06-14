@@ -128,6 +128,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Fælles
             protected set;
         }
 
+        /// <summary>
+        /// CVR-nummer.
+        /// </summary>
+        public virtual string CvrNr
+        {
+            get;
+            protected set;
+        }
+
         #endregion
 
         #region Methods
@@ -211,6 +220,15 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Fælles
         public virtual void SætLinje7(string linje)
         {
             Linje7 = linje;
+        }
+
+        /// <summary>
+        /// Sætter CVR-nummer.
+        /// </summary>
+        /// <param name="cvrNr">CVR-nummer.</param>
+        public virtual void SætCvrNr(string cvrNr)
+        {
+            CvrNr = cvrNr;
         }
 
         #endregion
