@@ -281,7 +281,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         /// <param name="navn">Navn.</param>
         public virtual void SætNavn(string navn)
         {
-            Navn = Navn;
+            Navn = navn;
         }
 
         /// <summary>
