@@ -258,7 +258,9 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Adressekartotek
         public virtual void Calculate(DateTime statusDato, int løbenr)
         {
             SaldoPrStatusdato = Bogføringslinjer
-                .Where(m => m.Løbenummer <= løbenr && m.Dato.CompareTo(statusDato) <= 0)
+                .Where(m =>
+                       m.Dato.CompareTo(statusDato.Date) < 0 ||
+                       (m.Dato.CompareTo(statusDato.Date) == 0 && m.Løbenummer <= løbenr))
                 .Sum(m => m.Debit - m.Kredit);
         }
 

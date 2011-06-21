@@ -144,8 +144,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             KreditPrStatusdato = kreditoplysninger == null ? 0M : kreditoplysninger.Kredit;
             // Beregn saldo pr. statusdato.
             SaldoPrStatusdato = Bogføringslinjer
-                .Where(m => m.Løbenummer <= løbenr && m.Dato.CompareTo(statusDato) <= 0)
-                .Sum(m => m.Debit - m.Kredit);
+                .Where(m =>
+                       m.Dato.Date.CompareTo(statusDato.Date) < 0 ||
+                       (m.Dato.Date.CompareTo(statusDato.Date) == 0 && m.Løbenummer <= løbenr))
+            .Sum(m => m.Debit - m.Kredit);
         }
 
         #endregion
