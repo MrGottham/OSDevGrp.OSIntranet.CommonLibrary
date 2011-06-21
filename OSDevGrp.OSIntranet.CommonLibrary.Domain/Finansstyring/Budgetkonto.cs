@@ -214,9 +214,10 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         private decimal CalculateBogført(DateTime fraDato, DateTime tilDato, int løbenr)
         {
             return Bogføringslinjer
-                .Where(
-                    m =>
-                    m.Løbenummer <= løbenr && m.Dato.Date.CompareTo(fraDato) >= 0 && m.Dato.Date.CompareTo(tilDato) <= 0)
+                .Where(m =>
+                       m.Dato.Date.CompareTo(fraDato.Date) >= 0 &&
+                       (m.Dato.Date.CompareTo(tilDato.Date) < 0 ||
+                        (m.Dato.Date.CompareTo(tilDato.Date) == 0 && m.Løbenummer <= løbenr)))
                 .Sum(m => m.Debit - m.Kredit);
         }
 
