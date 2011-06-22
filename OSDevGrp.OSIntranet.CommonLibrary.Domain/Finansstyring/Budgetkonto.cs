@@ -33,7 +33,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             if (budgetkontogruppe == null)
             {
-                throw new ArgumentException("budgetkontogruppe");
+                throw new ArgumentNullException("budgetkontogruppe");
             }
             _budgetkontogruppe = budgetkontogruppe;
         }

@@ -31,7 +31,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         {
             if (string.IsNullOrEmpty(navn))
             {
-                throw new ArgumentException(navn);
+                throw new ArgumentNullException("navn");
             }
             _nummer = nummer;
             _navn = navn;
