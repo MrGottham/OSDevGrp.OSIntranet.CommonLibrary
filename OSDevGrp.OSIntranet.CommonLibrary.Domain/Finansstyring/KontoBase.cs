@@ -83,7 +83,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
                 {
                     throw new ArgumentNullException("value");
                 }
-                _kontonavn = value.ToUpper();
+                _kontonavn = value;
             }
         }
 
