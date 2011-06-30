@@ -5,7 +5,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.Core
     /// <summary>
     /// Basisklasse for en commandhandler, der ikke understøtter transaktioner.
     /// </summary>
-    public abstract class CommandHandlerNonTransactionalBase : ICommand, IUnitOfWorkAware
+    public abstract class CommandHandlerNonTransactionalBase : CommandHandlerBase, IUnitOfWorkAware
     {
         #region IUnitOfWorkAware Members
 
