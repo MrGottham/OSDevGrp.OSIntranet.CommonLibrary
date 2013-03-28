@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("OS Development Group")]
 [assembly: AssemblyProduct("OS Intranet - Common Library")]
-[assembly: AssemblyCopyright("Copyright © OS Development Group 2011")]
+[assembly: AssemblyCopyright("Copyright © OS Development Group 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
