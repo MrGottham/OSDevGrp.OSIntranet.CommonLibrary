@@ -33,14 +33,24 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Wcf
             {
                 throw new ArgumentNullException("communicationObject");
             }
-            if (communicationObject.State == CommunicationState.Created ||
-                communicationObject.State == CommunicationState.Opened)
+            try
             {
-                communicationObject.Close();
+                if (communicationObject.State == CommunicationState.Created || communicationObject.State == CommunicationState.Opened)
+                {
+                    communicationObject.Close();
+                }
+                else
+                {
+                    communicationObject.Abort();
+                }
             }
-            else
+            finally
             {
-                communicationObject.Abort();
+                var disposable = communicationObject as IDisposable;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                }
             }
         }
     }
