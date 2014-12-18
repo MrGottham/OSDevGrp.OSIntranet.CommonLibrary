@@ -71,9 +71,63 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
         }
 
         /// <summary>
+        /// Budget sidste måned i forhold til statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BudgetSidsteMåned
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Budget sidste år i forhold til statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BudgetSidsteÅr
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Budget år til statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BudgetÅrTilStatusdato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
         /// Bogført beløb pr. statusdato (beregnes ved hjælp af metoden Calculate).
         /// </summary>
         public virtual decimal BogførtPrStatusdato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Bogført sidste måned i forhold til statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BogførtSidsteMåned
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Bogført år til statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BogførtÅrTilStatusdato
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// Bogført sidste år i forhold til statusdato (beregnes ved hjælp af metoden Calculate).
+        /// </summary>
+        public virtual decimal BogførtSidsteÅr
         {
             get;
             protected set;
@@ -161,6 +215,18 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Domain.Finansstyring
             var aktuelBudgetoplysninger = Budgetoplysninger.SingleOrDefault(m => m.År == statusDato.Year && m.Måned == statusDato.Month);
             BudgetPrStatusdato = aktuelBudgetoplysninger == null ? 0M : aktuelBudgetoplysninger.Budget;
             BogførtPrStatusdato = aktuelBudgetoplysninger == null ? CalculateBogført(new DateTime(statusDato.Year, statusDato.Month, 1), statusDato, løbenr) : aktuelBudgetoplysninger.BogførtPrStatusdato;
+
+            var sidsteMånedStatusDato = new DateTime(statusDato.AddMonths(-1).Year, statusDato.AddMonths(-1).Month, DateTime.DaysInMonth(statusDato.AddMonths(-1).Year, statusDato.AddMonths(-1).Month));
+            var sidsteMånedBudgetoplysninger = Budgetoplysninger.SingleOrDefault(m => m.År == sidsteMånedStatusDato.Year && m.Måned == sidsteMånedStatusDato.Month);
+            BudgetSidsteMåned = sidsteMånedBudgetoplysninger == null ? 0M : sidsteMånedBudgetoplysninger.Budget;
+            BogførtSidsteMåned = sidsteMånedBudgetoplysninger == null ? CalculateBogført(new DateTime(sidsteMånedStatusDato.Year, sidsteMånedStatusDato.Month, 1), sidsteMånedStatusDato, løbenr) : sidsteMånedBudgetoplysninger.BogførtPrStatusdato;
+
+            BudgetÅrTilStatusdato = Budgetoplysninger.Where(m => m.År == statusDato.Year && m.Måned <= statusDato.Month).Sum(m => m.Budget);
+            BogførtÅrTilStatusdato = CalculateBogført(new DateTime(statusDato.Year, 1, 1), statusDato, løbenr);
+
+            var sidsteÅrStatusDato = new DateTime(statusDato.AddYears(-1).Year, 12, 31);
+            BudgetSidsteÅr = Budgetoplysninger.Where(m => m.År == sidsteÅrStatusDato.Year).Sum(m => m.Budget);
+            BogførtSidsteÅr = CalculateBogført(new DateTime(sidsteÅrStatusDato.Year, 1, 1), sidsteÅrStatusDato, løbenr);
         }
 
         #endregion
