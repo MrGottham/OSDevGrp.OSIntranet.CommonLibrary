@@ -20,7 +20,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtConstructorDannerCommonRepositoryEception()
         {
             var fixture = new Fixture();
-            var message = fixture.CreateAnonymous<string>();
+            var message = fixture.Create<string>();
             var commonRepositoryException = new CommonRepositoryException(message);
             Assert.That(commonRepositoryException, Is.Not.Null);
             Assert.That(commonRepositoryException.Message, Is.Not.Null);
@@ -35,8 +35,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtConstructorDannerCommonRepositoryEceptionMedInnerException()
         {
             var fixture = new Fixture();
-            var message = fixture.CreateAnonymous<string>();
-            var innerException = fixture.CreateAnonymous<Exception>();
+            var message = fixture.Create<string>();
+            var innerException = fixture.Create<Exception>();
             var commonRepositoryException = new CommonRepositoryException(message, innerException);
             Assert.That(commonRepositoryException, Is.Not.Null);
             Assert.That(commonRepositoryException.Message, Is.Not.Null);
@@ -52,7 +52,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtCommonRepositoryExceptionKanSerialiseresOgDeserialiseres()
         {
             var fixture = new Fixture();
-            var commonRepositoryException = fixture.CreateAnonymous<CommonRepositoryException>();
+            var commonRepositoryException = fixture.Create<CommonRepositoryException>();
             Assert.That(commonRepositoryException, Is.Not.Null);
 
             var memoryStream = new MemoryStream();

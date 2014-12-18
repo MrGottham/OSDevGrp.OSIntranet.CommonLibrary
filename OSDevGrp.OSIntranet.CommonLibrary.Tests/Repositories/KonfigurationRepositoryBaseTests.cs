@@ -38,7 +38,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetStringFromApplicationSettingsHenterValueForKeyName()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetStringFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -46,8 +46,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                         new[] {typeof (NameValueCollection), typeof (string)}, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
-            var value = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
+            var value = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, value}
@@ -64,7 +64,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetStringFromApplicationSettingsHenterEmptyValueForKeyName()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetStringFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -76,7 +76,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                             }, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, string.Empty}
@@ -93,7 +93,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetStringFromApplicationSettingsKasterArgumentNullExceptionHvisApplicationSettingsErNull()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetStringFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -113,7 +113,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetStringFromApplicationSettingsKasterArgumentNullExceptionHvisKeyNameErNull()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetStringFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -121,7 +121,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                         new[] {typeof (NameValueCollection), typeof (string)}, null);
             Assert.That(method, Is.Not.Null);
 
-            var applicationSettings = fixture.CreateAnonymous<NameValueCollection>();
+            var applicationSettings = fixture.Create<NameValueCollection>();
             Assert.That(
                 Assert.Throws<TargetInvocationException>(
                     () => method.Invoke(repository, new object[] {applicationSettings, null})).InnerException,
@@ -135,7 +135,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetStringFromApplicationSettingsKasterCommonRepositoryExceptionHvisKeyNameIkkeFindesIApplicationSettings()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetStringFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -143,8 +143,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                         new[] {typeof (NameValueCollection), typeof (string)}, null);
             Assert.That(method, Is.Not.Null);
 
-            var applicationSettings = fixture.CreateAnonymous<NameValueCollection>();
-            var keyName = fixture.CreateAnonymous<string>();
+            var applicationSettings = fixture.Create<NameValueCollection>();
+            var keyName = fixture.Create<string>();
             Assert.That(
                 Assert.Throws<TargetInvocationException>(
                     () => method.Invoke(repository, new object[] {applicationSettings, keyName})).InnerException,
@@ -158,7 +158,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetStringFromApplicationSettingsKasterCommonRepositoryExceptionHvisValueForKeyNameErEmpty()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetStringFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -170,7 +170,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                             }, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, string.Empty}
@@ -188,14 +188,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetIntFromApplicationSettingsHenterVærdiForKeyName()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetIntFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
-            var value = fixture.CreateAnonymous<int>();
+            var keyName = fixture.Create<string>();
+            var value = fixture.Create<int>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, value.ToString()}
@@ -211,14 +211,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetIntFromApplicationSettingsKasterCommonRepositoryExceptionHvisVærdiIkkeKanParses()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetIntFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
-            var value = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
+            var value = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, value}
@@ -236,14 +236,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetBoolFromApplicationSettingsHenterVærdiForKeyName()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetBoolFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
-            var value = fixture.CreateAnonymous<bool>();
+            var keyName = fixture.Create<string>();
+            var value = fixture.Create<bool>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, value.ToString()}
@@ -259,14 +259,14 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetBoolFromApplicationSettingsKasterCommonRepositoryExceptionHvisVærdiIkkeKanParses()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetBoolFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
-            var value = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
+            var value = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, value}
@@ -284,7 +284,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetPathFromApplicationSettingsHenterVærdiForKeyName()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetPathFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -292,7 +292,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                         new[] {typeof (NameValueCollection), typeof (string)}, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
             var value = Environment.CurrentDirectory;
             var applicationSettings = new NameValueCollection
                                           {
@@ -311,7 +311,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetPathFromApplicationSettingsHenterVærdiMedEnvironmentVariabelForKeyName()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetPathFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -319,7 +319,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                         new[] {typeof (NameValueCollection), typeof (string)}, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, "%WinDir%"}
@@ -337,7 +337,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetPathFromApplicationSettingsReturnererNullHvisValueErEmpty()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetPathFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -349,7 +349,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                             }, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
             var value = string.Empty;
             var applicationSettings = new NameValueCollection
                                           {
@@ -366,7 +366,7 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
         public void TestAtGetPathFromApplicationSettingsKasterCommonRepositoryExceptionHvisPathIkkeEksisterer()
         {
             var fixture = new Fixture();
-            var repository = fixture.CreateAnonymous<MyKonfigurationRepository>();
+            var repository = fixture.Create<MyKonfigurationRepository>();
 
             var method = repository.GetType().GetMethod("GetPathFromApplicationSettings",
                                                         BindingFlags.Instance | BindingFlags.NonPublic, null,
@@ -374,8 +374,8 @@ namespace OSDevGrp.OSIntranet.CommonLibrary.Tests.Repositories
                                                         new[] {typeof (NameValueCollection), typeof (string)}, null);
             Assert.That(method, Is.Not.Null);
 
-            var keyName = fixture.CreateAnonymous<string>();
-            var value = fixture.CreateAnonymous<string>();
+            var keyName = fixture.Create<string>();
+            var value = fixture.Create<string>();
             var applicationSettings = new NameValueCollection
                                           {
                                               {keyName, value}

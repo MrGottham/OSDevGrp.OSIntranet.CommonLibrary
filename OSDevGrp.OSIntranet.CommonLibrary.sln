@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Domain", "OSDevGrp.OSIntranet.CommonLibrary.Domain\OSDevGrp.OSIntranet.CommonLibrary.Domain.csproj", "{33117149-6C04-41C1-B50E-9CE4049B6851}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CAB8ACA4-D647-4FFC-9847-6BFA7B94E166}"
@@ -11,15 +11,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces", "OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj", "{F692A1A2-5762-4B19-9FD2-504AE474C049}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.IoC", "OSDevGrp.OSIntranet.CommonLibrary.IoC\OSDevGrp.OSIntranet.CommonLibrary.IoC.csproj", "{C973087B-BA1F-461B-BE7A-DB4FC03306FE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External references", "External references", "{D6244D71-78BD-43EA-A07B-E492E884D470}"
-	ProjectSection(SolutionItems) = preProject
-		External references\Castle.Core.dll = External references\Castle.Core.dll
-		External references\Castle.Windsor.dll = External references\Castle.Windsor.dll
-		External references\nunit.framework.dll = External references\nunit.framework.dll
-		External references\Ploeh.AutoFixture.dll = External references\Ploeh.AutoFixture.dll
-		External references\Rhino.Mocks.dll = External references\Rhino.Mocks.dll
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Resources", "OSDevGrp.OSIntranet.CommonLibrary.Resources\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj", "{2EBCC49B-142C-4DA2-A021-ADA925975A3A}"
 EndProject
@@ -34,6 +25,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface", "OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface\OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface.csproj", "{5246F0B7-6ACF-469D-A1E6-5AD9B194B82C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Repositories", "OSDevGrp.OSIntranet.CommonLibrary.Repositories\OSDevGrp.OSIntranet.CommonLibrary.Repositories.csproj", "{04B7D2CC-5C24-40EE-B8A1-36B511BAA1A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{834BB614-73EB-4514-88F6-7884791BC093}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
