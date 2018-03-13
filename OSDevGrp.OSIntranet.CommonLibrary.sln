@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDevGrp.OSIntranet.CommonLibrary.Domain", "OSDevGrp.OSIntranet.CommonLibrary.Domain\OSDevGrp.OSIntranet.CommonLibrary.Domain.csproj", "{33117149-6C04-41C1-B50E-9CE4049B6851}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CAB8ACA4-D647-4FFC-9847-6BFA7B94E166}"
@@ -34,40 +36,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{834BB6
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 11
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = OSDevGrp.OSIntranet.CommonLibrary.Domain\\OSDevGrp.OSIntranet.CommonLibrary.Domain.csproj
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = OSDevGrp.OSIntranet.CommonLibrary.Domain\\
-		SccProjectUniqueName2 = OSDevGrp.OSIntranet.CommonLibrary.IoC\\OSDevGrp.OSIntranet.CommonLibrary.IoC.csproj
-		SccLocalPath2 = .
-		SccProjectFilePathRelativizedFromConnection2 = OSDevGrp.OSIntranet.CommonLibrary.IoC\\
-		SccProjectUniqueName3 = OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\\OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces.csproj
-		SccLocalPath3 = .
-		SccProjectFilePathRelativizedFromConnection3 = OSDevGrp.OSIntranet.CommonLibrary.IoC.Interfaces\\
-		SccProjectUniqueName4 = OSDevGrp.OSIntranet.CommonLibrary.Resources\\OSDevGrp.OSIntranet.CommonLibrary.Resources.csproj
-		SccLocalPath4 = .
-		SccProjectFilePathRelativizedFromConnection4 = OSDevGrp.OSIntranet.CommonLibrary.Resources\\
-		SccProjectUniqueName5 = OSDevGrp.OSIntranet.CommonLibrary.Tests\\OSDevGrp.OSIntranet.CommonLibrary.Tests.csproj
-		SccLocalPath5 = .
-		SccProjectFilePathRelativizedFromConnection5 = OSDevGrp.OSIntranet.CommonLibrary.Tests\\
-		SccProjectUniqueName6 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces\\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces.csproj
-		SccLocalPath6 = .
-		SccProjectFilePathRelativizedFromConnection6 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.Interfaces\\
-		SccProjectUniqueName7 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\\OSDevGrp.OSIntranet.CommonLibrary.Infrastructure.csproj
-		SccLocalPath7 = .
-		SccProjectFilePathRelativizedFromConnection7 = OSDevGrp.OSIntranet.CommonLibrary.Infrastructure\\
-		SccProjectUniqueName8 = OSDevGrp.OSIntranet.CommonLibrary.Wcf\\OSDevGrp.OSIntranet.CommonLibrary.Wcf.csproj
-		SccLocalPath8 = .
-		SccProjectFilePathRelativizedFromConnection8 = OSDevGrp.OSIntranet.CommonLibrary.Wcf\\
-		SccProjectUniqueName9 = OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface\\OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface.csproj
-		SccLocalPath9 = .
-		SccProjectFilePathRelativizedFromConnection9 = OSDevGrp.OSIntranet.CommonLibrary.Repositories.Interface\\
-		SccProjectUniqueName10 = OSDevGrp.OSIntranet.CommonLibrary.Repositories\\OSDevGrp.OSIntranet.CommonLibrary.Repositories.csproj
-		SccLocalPath10 = .
-		SccProjectFilePathRelativizedFromConnection10 = OSDevGrp.OSIntranet.CommonLibrary.Repositories\\
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -116,5 +84,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E11BD669-ED91-4DED-A543-F43CBBE751CC}
 	EndGlobalSection
 EndGlobal
